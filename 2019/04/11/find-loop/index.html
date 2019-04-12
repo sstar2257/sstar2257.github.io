@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>find_loop | 灰蛋&#39;s blog</title>
+  <title>判断一个图是否存在环 | 灰蛋&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="find_loop">
+  <meta name="description" content="有向图算法1对于有向图进行拓扑排序可以判断是否存在环。对于有向图的拓扑排序，大家都知道的kahn算法：    计算图中所有点的入度，把入度为0的点加入栈 如果栈非空：取出栈顶顶点a，输出该顶点值，删除该顶点从图中删除所有以a为起始点的边，如果删除的边的另一个顶点入度为0，则把它入栈 如果图中还存在顶点，则表示图中存在环；否则输出的顶点就是一个拓扑排序序列  算法2无向图的算法2 算法3根据有向图的">
+<meta name="keywords" content="graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断一个图是否存在环">
 <meta property="og:url" content="http://yoursite.com/2019/04/11/find-loop/index.html">
 <meta property="og:site_name" content="灰蛋&#39;s blog">
+<meta property="og:description" content="有向图算法1对于有向图进行拓扑排序可以判断是否存在环。对于有向图的拓扑排序，大家都知道的kahn算法：    计算图中所有点的入度，把入度为0的点加入栈 如果栈非空：取出栈顶顶点a，输出该顶点值，删除该顶点从图中删除所有以a为起始点的边，如果删除的边的另一个顶点入度为0，则把它入栈 如果图中还存在顶点，则表示图中存在环；否则输出的顶点就是一个拓扑排序序列  算法2无向图的算法2 算法3根据有向图的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-11T06:58:41.353Z">
+<meta property="og:updated_time" content="2019-04-11T07:23:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="find_loop">
+<meta name="twitter:title" content="判断一个图是否存在环">
+<meta name="twitter:description" content="有向图算法1对于有向图进行拓扑排序可以判断是否存在环。对于有向图的拓扑排序，大家都知道的kahn算法：    计算图中所有点的入度，把入度为0的点加入栈 如果栈非空：取出栈顶顶点a，输出该顶点值，删除该顶点从图中删除所有以a为起始点的边，如果删除的边的另一个顶点入度为0，则把它入栈 如果图中还存在顶点，则表示图中存在环；否则输出的顶点就是一个拓扑排序序列  算法2无向图的算法2 算法3根据有向图的">
   
     <link rel="alternative" href="/atom.xml" title="灰蛋&#39;s blog" type="application/atom+xml">
   
@@ -158,20 +162,37 @@
         
   
     <h1 class="article-title" itemprop="name">
-      find_loop
+      判断一个图是否存在环
     </h1>
   
 
         
         <a href="/2019/04/11/find-loop/" class="archive-article-date">
-  	<time datetime="2019-04-11T06:58:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+  	<time datetime="2019-04-11T07:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h2><h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><p>对于有向图进行拓扑排序可以判断是否存在环。<br>对于有向图的拓扑排序，大家都知道的kahn算法：  </p>
+<ol>
+<li>计算图中所有点的入度，把入度为0的点加入栈</li>
+<li>如果栈非空：<br>取出栈顶顶点a，输出该顶点值，删除该顶点<br>从图中删除所有以a为起始点的边，如果删除的边的另一个顶点入度为0，则把它入栈</li>
+<li>如果图中还存在顶点，则表示图中存在环；否则输出的顶点就是一个拓扑排序序列</li>
+</ol>
+<h3 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h3><p>无向图的算法2</p>
+<h3 id="算法3"><a href="#算法3" class="headerlink" title="算法3"></a>算法3</h3><p>根据有向图的强连通分量算法，每个强连通分量中必定存在环，因为根据强连通分量的定义：从顶点 i 到 j 有一条路径，并且从 j 到 i 也有一条路径。求强连通分量的算法可以参考<a href="https://zh.wikipedia.org/wiki/强连通分量" target="_blank" rel="noopener">维基百科</a>。  </p>
+<h2 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h2><h3 id="算法1-1"><a href="#算法1-1" class="headerlink" title="算法1"></a>算法1</h3><p>对于环1-2-3-4-1，每个节点的度都是2，基于此我们有如下算法（这是类似于有向图的拓扑排序）：  </p>
+<ol>
+<li>求出图中所有顶点的度；</li>
+<li>删除图中所有度&lt;=1的顶点以及与该顶点相连的边，把与这些边相连的另一个顶点度减1；</li>
+<li>重复步骤2</li>
+<li>最后如果还存在未被删除的顶点，则表示有环，否则没有环。<br>时间复杂度为O（E+V），其中E、V分别为图中边和顶点的数目。  </li>
+</ol>
+<h3 id="算法2-1"><a href="#算法2-1" class="headerlink" title="算法2"></a>算法2</h3><p>深度优先遍历该图，如果在遍历的过程中，发现某个节点有一条边指向已经访问过的节点，并且这个已访问过的节点不是当前节点的父节点（这里的父节点表示dfs遍历顺序中的父节点），则表示存在环。但是我们不能仅仅使用一个bool数组来标志节点是否访问过。<br>按照算法导论22.3节深度优先搜索中，对每个节点分为三种状态，白、灰、黑。开始时所有节点都是白色，当开始访问某个节点时该节点变为灰色，当该节点的所有邻接点都访问完，该节点颜色变为黑色。那么我们的算法则为：如果遍历的过程中发现某个节点有一条边指向颜色为灰的节点，那么存在环。<br>算法时间复杂度也是O(E+V)。  </p>
+<p><a href="http://www.cnblogs.com/TenosDoIt/p/3644225.html" target="_blank" rel="noopener">原文连接</a>  </p>
+
       
 
       
@@ -200,6 +221,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">graph</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -264,6 +296,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/04/12/find-k-largest/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          查找给定数组中最大的第k个数
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/04/10/process-scheduling/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">进程调度</div>
@@ -285,6 +326,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#有向图"><span class="toc-number">1.</span> <span class="toc-text">有向图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法1"><span class="toc-number">1.1.</span> <span class="toc-text">算法1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法2"><span class="toc-number">1.2.</span> <span class="toc-text">算法2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法3"><span class="toc-number">1.3.</span> <span class="toc-text">算法3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无向图"><span class="toc-number">2.</span> <span class="toc-text">无向图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法1-1"><span class="toc-number">2.1.</span> <span class="toc-text">算法1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法2-1"><span class="toc-number">2.2.</span> <span class="toc-text">算法2</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -392,7 +446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">graph</a>
               </li>
             
             <div class="clearfix"></div>
