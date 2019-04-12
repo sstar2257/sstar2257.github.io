@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>进程调度 | 灰蛋&#39;s blog</title>
+  <title>max_rectangle | 灰蛋&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="调度策略 FCFS（先来先服务）：当每个进程就绪后，加入就绪队列。当前正在运行的进程停止执行时，选择在就绪队列中存在时间最长的进程执行。执行长进程比短进程好，通常与优先级策略相结合。   轮转：以一个周期性间隔产生时钟中断，当中断发生时，当前正在运行的进程被置于就绪队列中，然后基于FCFS策略选择下一个就绪作业运行。   虚拟轮转法：解除了IO阻塞的进程都被转移到一个FCFS辅助队列中，当进行一个">
-<meta name="keywords" content="os">
+  <meta name="description" content="刷leetcode遇到的求二维矩阵最大面积的题目，记录下Largest Rectangle in Histogram 给定一个一维数组代表柱状图，求最大的矩形面积。">
+<meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程调度">
-<meta property="og:url" content="http://yoursite.com/2019/04/10/process-scheduling/index.html">
+<meta property="og:title" content="max_rectangle">
+<meta property="og:url" content="http://yoursite.com/2019/04/12/max-rectangle/index.html">
 <meta property="og:site_name" content="灰蛋&#39;s blog">
-<meta property="og:description" content="调度策略 FCFS（先来先服务）：当每个进程就绪后，加入就绪队列。当前正在运行的进程停止执行时，选择在就绪队列中存在时间最长的进程执行。执行长进程比短进程好，通常与优先级策略相结合。   轮转：以一个周期性间隔产生时钟中断，当中断发生时，当前正在运行的进程被置于就绪队列中，然后基于FCFS策略选择下一个就绪作业运行。   虚拟轮转法：解除了IO阻塞的进程都被转移到一个FCFS辅助队列中，当进行一个">
+<meta property="og:description" content="刷leetcode遇到的求二维矩阵最大面积的题目，记录下Largest Rectangle in Histogram 给定一个一维数组代表柱状图，求最大的矩形面积。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-12T07:52:55.975Z">
+<meta property="og:image" content="http://yoursite.com/img/pic84.png">
+<meta property="og:image" content="http://yoursite.com/img/pic85.png">
+<meta property="og:image" content="http://yoursite.com/img/pic221.png">
+<meta property="og:updated_time" content="2019-04-12T13:42:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="进程调度">
-<meta name="twitter:description" content="调度策略 FCFS（先来先服务）：当每个进程就绪后，加入就绪队列。当前正在运行的进程停止执行时，选择在就绪队列中存在时间最长的进程执行。执行长进程比短进程好，通常与优先级策略相结合。   轮转：以一个周期性间隔产生时钟中断，当中断发生时，当前正在运行的进程被置于就绪队列中，然后基于FCFS策略选择下一个就绪作业运行。   虚拟轮转法：解除了IO阻塞的进程都被转移到一个FCFS辅助队列中，当进行一个">
+<meta name="twitter:title" content="max_rectangle">
+<meta name="twitter:description" content="刷leetcode遇到的求二维矩阵最大面积的题目，记录下Largest Rectangle in Histogram 给定一个一维数组代表柱状图，求最大的矩形面积。">
+<meta name="twitter:image" content="http://yoursite.com/img/pic84.png">
   
     <link rel="alternative" href="/atom.xml" title="灰蛋&#39;s blog" type="application/atom+xml">
   
@@ -155,40 +159,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-process-scheduling" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-max-rectangle" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      进程调度
+      max_rectangle
     </h1>
   
 
         
-        <a href="/2019/04/10/process-scheduling/" class="archive-article-date">
-  	<time datetime="2019-04-10T06:38:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
+        <a href="/2019/04/12/max-rectangle/" class="archive-article-date">
+  	<time datetime="2019-04-12T13:42:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h3><ul>
-<li><em>FCFS（先来先服务）</em>：当每个进程就绪后，加入就绪队列。当前正在运行的进程停止执行时，选择在就绪队列中存在时间最长的进程执行。执行长进程比短进程好，通常与优先级策略相结合。  </li>
-<li><em>轮转</em>：以一个周期性间隔产生时钟中断，当中断发生时，当前正在运行的进程被置于就绪队列中，然后基于FCFS策略选择下一个就绪作业运行。  <blockquote>
-<p>虚拟轮转法：解除了IO阻塞的进程都被转移到一个FCFS辅助队列中，当进行一个调度决策时，辅助队列中的进程优先于就绪队列中的进程。  </p>
-</blockquote>
-</li>
-<li><em>最短进程优先（非抢占）</em>：下一次选择预计处理时间最短的进程，需要预先直到每个进程所需要的处理时间。  </li>
-<li><em>最短剩余时间（抢占）</em>：选择预期剩余时间最短的进程。存在长进程长期饥饿的危险。</li>
-<li><em>最高响应比优先</em>：调度规则在当前进程完成或被阻塞时，选择R=（w+s）/s最大的就绪进程。（w为等待处理器的时间，s为预计的服务时间）。当偏向短作业时，长进程由于w的不断增加，从而增大比值赢得短进程。  </li>
-<li><em>反馈</em>：调度基于抢占原则并且使用动态优先级机制。当一个进程第一次进入系统中时，被放置在RQ0，当它第一次被抢占后并返回就绪状态时，放到RQ1。在随后的时间里，每当它被抢占时，它被降级到下一个低优先级队列中。<blockquote>
-<p>一个短进程会很快执行完，不会在就绪队列中降很多级。一个长进程会逐级相加。因此新到的进程和短进程优先于老进程和长进程。  </p>
-</blockquote>
-</li>
-</ul>
+        <h2 id="刷leetcode遇到的求二维矩阵最大面积的题目，记录下"><a href="#刷leetcode遇到的求二维矩阵最大面积的题目，记录下" class="headerlink" title="刷leetcode遇到的求二维矩阵最大面积的题目，记录下"></a>刷leetcode遇到的求二维矩阵最大面积的题目，记录下</h2><h3 id="Largest-Rectangle-in-Histogram-给定一个一维数组代表柱状图，求最大的矩形面积。"><a href="#Largest-Rectangle-in-Histogram-给定一个一维数组代表柱状图，求最大的矩形面积。" class="headerlink" title="Largest Rectangle in Histogram 给定一个一维数组代表柱状图，求最大的矩形面积。"></a><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">Largest Rectangle in Histogram</a> 给定一个一维数组代表柱状图，求最大的矩形面积。</h3><p><img src="/img/pic84.png" alt="q84"><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int max(int a, int b)&#123;</span><br><span class="line">        return a &gt; b ? a : b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int largestRectangleArea(vector&lt;int&gt;&amp; heights) &#123;</span><br><span class="line">        int len = heights.size();</span><br><span class="line">        int i = 0;</span><br><span class="line">        int s = 0;</span><br><span class="line">        int tmp;</span><br><span class="line">        stack&lt;int&gt; sta;</span><br><span class="line"></span><br><span class="line">        while(i &lt; len)&#123;</span><br><span class="line">            while(!sta.empty() &amp;&amp; heights[i] &lt; heights[sta.top()])&#123;</span><br><span class="line">                tmp = sta.top();</span><br><span class="line">                sta.pop();</span><br><span class="line">                s = max(s, heights[tmp] * (i - (sta.empty() ? 0: sta.top() + 1)));</span><br><span class="line">            &#125;</span><br><span class="line">            sta.push(i++);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        while(!sta.empty())&#123;</span><br><span class="line">            tmp = sta.top();</span><br><span class="line">            sta.pop();</span><br><span class="line">            s = max(s, heights[tmp] * (len - (sta.empty() ? 0: sta.top() + 1)));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Maximal-Rectangle给定一个二维矩阵，求最大的矩形面积。"><a href="#Maximal-Rectangle给定一个二维矩阵，求最大的矩形面积。" class="headerlink" title="Maximal Rectangle给定一个二维矩阵，求最大的矩形面积。"></a><a href="https://leetcode.com/problems/maximal-rectangle/" target="_blank" rel="noopener">Maximal Rectangle</a>给定一个二维矩阵，求最大的矩形面积。</h3><p>可以参考上面的做法，按行遍历，然后对每一行进行上面的算法。<br>leetcode讨论区还有一种动态规划做法，没看明白之后再说。<br><img src="/img/pic85.png" alt="q85"></p>
+<h3 id="Maximal-Square给定一个二位矩阵，求最大的正方形。"><a href="#Maximal-Square给定一个二位矩阵，求最大的正方形。" class="headerlink" title="Maximal Square给定一个二位矩阵，求最大的正方形。"></a><a href="https://leetcode.com/problems/maximal-square/" target="_blank" rel="noopener">Maximal Square</a>给定一个二位矩阵，求最大的正方形。</h3><p>这道题比上面简单不少，可以使用动态规划求解。<br><img src="/img/pic221.png" alt="q221"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int min(int a, int b, int c)&#123;</span><br><span class="line">        a = a &lt; b ? a : b;</span><br><span class="line">        return a &lt; c ? a : c;</span><br><span class="line">    &#125;</span><br><span class="line">    int maximalSquare(vector&lt;vector&lt;char&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        int row = matrix.size();</span><br><span class="line">        if(row == 0)</span><br><span class="line">            return 0;</span><br><span class="line">        int col = matrix[0].size();</span><br><span class="line">        int **table = new int*[row+1]();</span><br><span class="line">        for(int i=0;i&lt;row+1;i++)&#123;</span><br><span class="line">            table[i] = new int[col+1]();</span><br><span class="line">        &#125;</span><br><span class="line">        int len = 0;</span><br><span class="line">        for(int i=1;i&lt;=row;++i)&#123;</span><br><span class="line">            for(int j=1;j&lt;=col;++j)&#123;</span><br><span class="line">                if(matrix[i-1][j-1] == &apos;1&apos;)&#123;</span><br><span class="line">                    table[i][j] = min(table[i-1][j], table[i-1][j-1], table[i][j-1]) + 1;</span><br><span class="line">                    len = max(len, table[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return len*len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -223,7 +216,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">os</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
         		</li>
       		
 		</ul>
@@ -279,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/10/process-scheduling/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/12/max-rectangle/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +286,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/11/find-loop/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          判断一个图是否存在环
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/09/buddy-system-and-slab/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">伙伴系统、slab</div>
+    <a href="/2019/04/12/ip-route/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">IP、MAC、路由</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -331,7 +315,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#调度策略"><span class="toc-number">1.</span> <span class="toc-text">调度策略</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#刷leetcode遇到的求二维矩阵最大面积的题目，记录下"><span class="toc-number">1.</span> <span class="toc-text">刷leetcode遇到的求二维矩阵最大面积的题目，记录下</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Largest-Rectangle-in-Histogram-给定一个一维数组代表柱状图，求最大的矩形面积。"><span class="toc-number">1.1.</span> <span class="toc-text">Largest Rectangle in Histogram 给定一个一维数组代表柱状图，求最大的矩形面积。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maximal-Rectangle给定一个二维矩阵，求最大的矩形面积。"><span class="toc-number">1.2.</span> <span class="toc-text">Maximal Rectangle给定一个二维矩阵，求最大的矩形面积。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maximal-Square给定一个二位矩阵，求最大的正方形。"><span class="toc-number">1.3.</span> <span class="toc-text">Maximal Square给定一个二位矩阵，求最大的正方形。</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

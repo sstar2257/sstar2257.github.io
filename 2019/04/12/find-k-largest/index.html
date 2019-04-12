@@ -177,6 +177,7 @@
       
         <p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60309/C%2B%2B-STL-partition-and-heapsort" target="_blank" rel="noopener">转载自leetcode Q215</a>  </p>
 <h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>This problem needs to use partial sorting. In STL, there are two built-in functions (<code>nth_element</code> and <code>partial_sort</code>) for this.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater&lt;int&gt;());</span><br><span class="line">        return nums[k - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        partial_sort(nums.begin(), nums.begin() + k, nums.end(), greater&lt;int&gt;());</span><br><span class="line">        return nums[k - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>Note the off-by-1 difference in the second argument of the two built-in functions.<br>We may also use a heap to solve this problem. We can maintain the largest k elements in a heap with the smallest among them at the top. Or we can add all the elements to a heap, with the largest at the top, and then pop the heap for k - 1 times, then the one on the top is our target. The first one is min-heap and the second one is max-heap. In STL, both priority_queue and multiset can be used as a min/max-heap.  </p>
 <h3 id="min-heap-using-priority-queue"><a href="#min-heap-using-priority-queue" class="headerlink" title="min-heap using priority_queue"></a>min-heap using <code>priority_queue</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq;</span><br><span class="line">        for (int num : nums) &#123;</span><br><span class="line">            pq.push(num);</span><br><span class="line">            if (pq.size() &gt; k) &#123;</span><br><span class="line">                pq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return pq.top();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -289,6 +290,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/04/12/ip-route/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          IP、MAC、路由
+        
+      </div>
+    </a>
   
   
     <a href="/2019/04/11/find-loop/" id="article-nav-older" class="article-nav-link-wrap">
@@ -440,6 +450,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">graph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">net</a>
               </li>
             
             <div class="clearfix"></div>

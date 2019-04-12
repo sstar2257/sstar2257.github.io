@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>my_first_site | 灰蛋&#39;s blog</title>
+  <title>IP、MAC、路由 | 灰蛋&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="my_first_site">
-<meta property="og:url" content="http://yoursite.com/2019/04/05/my-first-site/index.html">
+  <meta name="description" content="IP数据包经由路由转发的时候源IP，目的ip是否改变？这是个搞网络的基础问题，答案是不能改变的，除非做了nat转换才能改变。否则，数据包在整个传输过程中，源IP和目的IP不会发生改变。不过MAC地址是变化的，因为发送端开始不知道目的主机的MAC地址，所以每经过一个路由器，MAC地址都会发生变化。">
+<meta name="keywords" content="net">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP、MAC、路由">
+<meta property="og:url" content="http://yoursite.com/2019/04/12/ip-route/index.html">
 <meta property="og:site_name" content="灰蛋&#39;s blog">
+<meta property="og:description" content="IP数据包经由路由转发的时候源IP，目的ip是否改变？这是个搞网络的基础问题，答案是不能改变的，除非做了nat转换才能改变。否则，数据包在整个传输过程中，源IP和目的IP不会发生改变。不过MAC地址是变化的，因为发送端开始不知道目的主机的MAC地址，所以每经过一个路由器，MAC地址都会发生变化。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T08:00:26.161Z">
+<meta property="og:updated_time" content="2019-04-12T07:43:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my_first_site">
+<meta name="twitter:title" content="IP、MAC、路由">
+<meta name="twitter:description" content="IP数据包经由路由转发的时候源IP，目的ip是否改变？这是个搞网络的基础问题，答案是不能改变的，除非做了nat转换才能改变。否则，数据包在整个传输过程中，源IP和目的IP不会发生改变。不过MAC地址是变化的，因为发送端开始不知道目的主机的MAC地址，所以每经过一个路由器，MAC地址都会发生变化。">
   
     <link rel="alternative" href="/atom.xml" title="灰蛋&#39;s blog" type="application/atom+xml">
   
@@ -151,27 +155,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-my-first-site" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ip-route" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      my_first_site
+      IP、MAC、路由
     </h1>
   
 
         
-        <a href="/2019/04/05/my-first-site/" class="archive-article-date">
-  	<time datetime="2019-04-05T08:00:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-05</time>
+        <a href="/2019/04/12/ip-route/" class="archive-article-date">
+  	<time datetime="2019-04-12T07:43:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="IP数据包经由路由转发的时候源IP，目的ip是否改变？"><a href="#IP数据包经由路由转发的时候源IP，目的ip是否改变？" class="headerlink" title="IP数据包经由路由转发的时候源IP，目的ip是否改变？"></a>IP数据包经由路由转发的时候源IP，目的ip是否改变？</h3><p>这是个搞网络的基础问题，答案是不能改变的，除非做了nat转换才能改变。否则，数据包在整个传输过程中，源IP和目的IP不会发生改变。<br>不过MAC地址是变化的，因为发送端开始不知道目的主机的MAC地址，所以每经过一个路由器，MAC地址都会发生变化。<br><a id="more"></a></p>
+<h3 id="目的MAC地址是如何得到的？"><a href="#目的MAC地址是如何得到的？" class="headerlink" title="目的MAC地址是如何得到的？"></a>目的MAC地址是如何得到的？</h3><p>TCP/IP里面是用的ARP协议。比如新建了一个内网，如果一台机器A找机器B，封装Fram时（OSI的第二层用的数据格式），要封装对方的 MAC，开始时A不知道B的MAC，只知道IP，它就发一个ARP包，源IP是自己的，目的IP是B的，源MAC是自己的，目的MAC是广播的。然后这个ARP请求包在内网内被广播，当其他机器接到这个包时，用目的IP和自己的IP比较，不是的话就丢弃。是的话，B接到时，发现IP与自己的一样，就答应这个包的请求，把自己的MAC送给A。如果B是其他子网的机器，那么路由器会判断出B是其他子网，然后路由器把自己的MAC返回给A，A以后再给B发包时，目的MAC封装 的是路由器的。  </p>
+<h3 id="路由转发过程："><a href="#路由转发过程：" class="headerlink" title="路由转发过程："></a>路由转发过程：</h3><p>当主机A发向主机B的数据流在网络层封装成IP数据包，IP数据包的首部包含了源地址和目标地址。主机A会用本机配置的24位IP网络掩码255.255.255.0与目标地址进行与运算，得出目标网络地址与本机的网络地址是不是在同一个网段中。如果不是将IP数据包转发到网关。<br>在发往网关前主机A还会通过ARP的请求获得默认网关的MAC地址。在主机A数据链路层IP数据包封装成以太网数据帧，然后才发住到网关……也就是路由器上的一个端口。<br>当网关路由器接收到以太网数据帧时，发现数据帧中的目标MAC地址是自己的某一个端口的物理地址，这时路由器会把以太网数据帧的封装去掉。路由器认为这个IP数据包是要通过自己进行转发，接着它就在匹配路由表。匹配到路由项后，它就将包发往下一条地址。  </p>
+<p><font color="red">路由器转发数据包就是这样，所以它始终是不会改IP地址的。只会改MAC. </font><br>当有数据包传到路由器时，路由器首先将其的目的地址与路由表进行对比，如果是本地网络，将不会进行转发到外网络，而是直接转发给本地网内的目的主机；但是如果目的地址经路由表对比，发现不是在本网中，有nat就将改变源地址的IP（原源地址的Ip地址改为了路由器的IP地址），路由器将数据包转发到相应的端口，进行通信。<br>举个例子，如：A访问B：<br>首先对比是否同一子网，如果是,检查ARP表,有B的MAC就直接发送,没有就发送ARP请求.如果否，发送到默认网关C，源IP为A，源MAC为A，目的IP为B，目的MAC地址为C，<br>C接收到这个包，检查路由表，发送到下一跳D，源IP为A，源MAC为C，目的IP为B，目的MAC为D…..<br>如此循环,直到发送到B.<br><strong>NAT为特殊应用，会修改源IP为网关自己外网IP。</strong>   </p>
+<h2 id="网络基础之ARP地址解析协议（为什么IP地址和MAC地址都要有，又是如何通过IP地址解析到MAC地址的）"><a href="#网络基础之ARP地址解析协议（为什么IP地址和MAC地址都要有，又是如何通过IP地址解析到MAC地址的）" class="headerlink" title="网络基础之ARP地址解析协议（为什么IP地址和MAC地址都要有，又是如何通过IP地址解析到MAC地址的）"></a>网络基础之ARP地址解析协议（为什么IP地址和MAC地址都要有，又是如何通过IP地址解析到MAC地址的）</h2><h3 id="ARP协议-Address-Resolution-Protocol-地址解析协议"><a href="#ARP协议-Address-Resolution-Protocol-地址解析协议" class="headerlink" title="ARP协议 Address Resolution Protocol 地址解析协议"></a>ARP协议 Address Resolution Protocol 地址解析协议</h3><p>在局域网中，网络中实际传输的是“帧”，帧里面是有目标主机的MAC地址的。在以太网中，一个主机要和另一个主机进行直接通信，必须要知道目标主机的MAC地址。但这个目标MAC地址是如何获得的呢？它就是通过地址解析协议获得的。所谓“地址解析”就是主机在发送帧之前将目标主机的IP地址转换成目标主机的MAC地址的过程。ARP协议的基本功能就是通过目标主机的IP地址，查询目标主机的MAC地址，以保证通信的顺利进行。协议又称做服务，ARP协议也即ARP服务，提供把IP地址转换成MAC地址的服务.  </p>
+<h3 id="IP地址与MAC地址在互连网中的作用"><a href="#IP地址与MAC地址在互连网中的作用" class="headerlink" title="IP地址与MAC地址在互连网中的作用"></a>IP地址与MAC地址在互连网中的作用</h3><p>既然每个以太网设备在出厂时都有一个唯一的MAC地址了，那为什么还需要为每台主机再分配一个IP地址呢？或者说为什么每台主机都分配唯一的IP地址了，为什么还要在网络设备（如网卡，集线器，路由器等）生产时内嵌一个唯一的MAC地址呢？主要原因有以下几点：（1）IP地址的分配是根据网络的拓朴结构，而不是根据谁制造了网络设置。若将高效的路由选择方案建立在设备制造商的基础上而不是网络所处的拓朴位置基础上，这种方案是不可行的。（2）当存在一个附加层的地址寻址时，设备更易于移动和维修。例如，如果一个以太网卡坏了，可以被更换，而无须取得一个新的IP地址。如果一个IP主机从一个网络移到另一个网络，可以给它一个新的IP地址，而无须换一个新的网卡。<br>无论是局域网，还是广域网中的计算机之间的通信，最终都表现为将数据包从某种形式的链路上的初始节点出发，从一个节点传递到另一个节点，最终传送到目的节点。数据包在这些节点之间的移动都是由ARP（Address Resolution Protocol：地址解析协议）负责将IP地址映射到MAC地址上来完成的。<br>我们的网络基础硬件是工作在网卡与交换机的二层结构下的，只能识别MAC地址；<br>这二层结构并不能直接识别IP地址寻址，如果要走TCP /IP协议必须最终转换成MAC地址。<br>IP地址只是一个逻辑地址，主机相互通信时，首先要知道对方IP地址所对应的物理地址才能在物理网络上进行传输；地址解析通过ARP协议完成。<br>主机的以太网网卡只能识别MAC地址，而不能识别IP地址，若数据帧中不指明主机B的MAC 地址，主机B的网卡不能识别该帧是发给自己的，因此主机A仅知道主机B的IP地址还不够，还必须知道主机B的MAC地址，才能完成对主机B的访问；网络之间是用IP地址寻址，网络之内（同一物理网段或称IP子网）是用MAC地址寻址。<br>为了通俗易懂的解释ARP协议的作用，这里就举一个简单的PING命令例子：<br>假设在一个局域网中，（注意这里的前提是两台主机在同一局域网中）我们的计算机IP地址是192.168.1.1，现在DOS窗口中执行这个命令：<code>ping 192.168.1.2</code>。该命令会通过ICMP协议发送ICMP数据包。该过程需要经过下面的步骤： </p>
+<ol>
+<li>应用程序构造数据包，该步骤是产生ICMP包，然后把它提交给内核（网卡驱动程序）；</li>
+<li>内核检查是否能够转化该IP地址为MAC地址，也就是在本地的ARP缓存中查看IP-MAC对应表；</li>
+<li>如果存在该IP-MAC对应关系，那么跳到步骤7；如果不存在该IP-MAC对应关系，那么接续下面的步骤；</li>
+<li>内核进行ARP广播，即发送 ARP Request，向整个网络中大喊，这个IP是谁的，这个IP是谁的（这个ARP Request中包含有我们计算机的MAC地址；</li>
+<li>当192.168.1.2主机接收到该ARP请求后，就发送一个ARP 回应，即ARP REPLY命令，说道：这个IP是我的，你看这是我的MAC地址（ARP Request中包含自己的MAC地址）；</li>
+<li>我们的计算机获得192.168.1.2主机的IP-MAC地址对应关系，就保存到自己的ARP缓存中；</li>
+<li>内核将把目标主机IP转化为MAC地址，然后封装在以太网头结构中，再把数据发送出去；</li>
+<li>这样主机B看到发送过来的数据包包头里有自己的MAC地址，才会识别它，噢，这个数据是发送给我的（当数据包包头里只有B的IP地址时，主机B会不认识它，不去接收这个数据包）  </li>
+</ol>
+<p>IP地址具有全网范围内的寻址能力，主机A和B可能分别处在不同网络，主机A要访问主机B首先要知道主机B的IP地址，不然找不到主机B所在的网络。也就是说有了主机B的IP地址，主机A会知道主机B在哪里，知道它所在的网络，但不会把数据给它，只有得到它的MAC地址，之后，才会给它，就像验证身份证一样。<br>使用<code>arp  -a</code>命令就可以查看本地的ARP缓存内容，所以，执行一个本地的PING命令后，ARP缓存就会存在一个目的IP的记录了。当<br>然，如果你的数据包是发送到不同网段的目的地，那么就一定存在一条网关的IP-MAC地址对应的记录。<br>知道了ARP协议的作用，就能够很清楚地知道，数据包的向外传输是非常依赖MAC地址，可以看出ARP协议在网络传输中的不可缺少的作用。<br>假如说两台主机不在同一局域网，即便知道目的主机的MAC地址，两者也不能直接通信，必须经过路由转发才可以。所以此时，发送主机通过ARP协议获得的将不是目的主机的MAC地址，而是一台可以通往局域网外的路由器的某个端口的MAC地址。于是此后发送主机发往目的主机的所有帧，都将发往该路由器，通过它向外发送。这种情况称为ARP代理（ARP Proxy）。也就是说，本地主机当寻求一个IP地址的MAC时，找不到，不是同一局域网，那它会收到路由器的MAC地址，说，这个数据就交给你了，剩下的事就你来处理了，你去找目的主机吧！<br>每次都要用ARP request来寻求MAC是很低效的，ARP cache则很好的解决了这个问题<br>ARP协议工作在交换机（局域网内部）那一层面  </p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>IP地址是逻辑地址寻址，工作在网络层，具有全网范围内的寻址能力，可以快速定位目标地址所在的网络<br>MAC地址是物理地址寻址，工作在数据链路层，要将数据包发给对方必须知道对方的MAC地址，因为主机的以太网网卡只能识别MAC地址  </p>
+
       
 
       
@@ -200,6 +222,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">net</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -250,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/05/my-first-site/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/12/ip-route/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -264,18 +297,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/09/buddy-system-and-slab/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/12/max-rectangle/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          伙伴系统、slab
+          max_rectangle
         
       </div>
     </a>
   
   
-    <a href="/2019/04/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/04/12/find-k-largest/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">查找给定数组中最大的第k个数</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -302,8 +335,8 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP数据包经由路由转发的时候源IP，目的ip是否改变？"><span class="toc-number">1.</span> <span class="toc-text">IP数据包经由路由转发的时候源IP，目的ip是否改变？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目的MAC地址是如何得到的？"><span class="toc-number">2.</span> <span class="toc-text">目的MAC地址是如何得到的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由转发过程："><span class="toc-number">3.</span> <span class="toc-text">路由转发过程：</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#网络基础之ARP地址解析协议（为什么IP地址和MAC地址都要有，又是如何通过IP地址解析到MAC地址的）"><span class="toc-number"></span> <span class="toc-text">网络基础之ARP地址解析协议（为什么IP地址和MAC地址都要有，又是如何通过IP地址解析到MAC地址的）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ARP协议-Address-Resolution-Protocol-地址解析协议"><span class="toc-number">1.</span> <span class="toc-text">ARP协议 Address Resolution Protocol 地址解析协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP地址与MAC地址在互连网中的作用"><span class="toc-number">2.</span> <span class="toc-text">IP地址与MAC地址在互连网中的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结："><span class="toc-number">3.</span> <span class="toc-text">总结：</span></a></li></ol>
+                    </li></div>
                 </span>
             </div>
         </div>
@@ -423,6 +456,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">graph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">net</a>
               </li>
             
             <div class="clearfix"></div>
