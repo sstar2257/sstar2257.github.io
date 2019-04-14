@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>查找给定数组中最大的第k个数 | 灰蛋&#39;s blog</title>
+  <title>字节跳动笔试凉经 | 灰蛋&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转载自leetcode Q215   STLThis problem needs to use partial sorting. In STL, there are two built-in functions (nth_element and partial_sort) for this.1234567class Solution &amp;#123;public:    int findKthLarg">
-<meta name="keywords" content="algorithm">
+  <meta name="description" content="笔试4.14将近一周前受到的笔试邮件，大好的周日上午就贡献给他了。笔试是在牛客网的平台上，有开摄像头，后台开发岗120分钟5道编程题，可以切出IDE写。第一题给定一个只有0、1、2三个值的矩阵，一次操作可以把与2相邻的所有1变成2，问经过多少次操作之后该矩阵里没有1，如果能做到输出次数，否则输出-1。因为题目说明了矩阵最大只有10*10，所以可以直接暴力穷举。每次改变之后更新矩阵的状态。注意要开两">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="查找给定数组中最大的第k个数">
-<meta property="og:url" content="http://yoursite.com/2019/04/12/find-k-largest/index.html">
+<meta property="og:title" content="字节跳动笔试凉经">
+<meta property="og:url" content="http://yoursite.com/2019/04/14/typedance/index.html">
 <meta property="og:site_name" content="灰蛋&#39;s blog">
-<meta property="og:description" content="转载自leetcode Q215   STLThis problem needs to use partial sorting. In STL, there are two built-in functions (nth_element and partial_sort) for this.1234567class Solution &amp;#123;public:    int findKthLarg">
+<meta property="og:description" content="笔试4.14将近一周前受到的笔试邮件，大好的周日上午就贡献给他了。笔试是在牛客网的平台上，有开摄像头，后台开发岗120分钟5道编程题，可以切出IDE写。第一题给定一个只有0、1、2三个值的矩阵，一次操作可以把与2相邻的所有1变成2，问经过多少次操作之后该矩阵里没有1，如果能做到输出次数，否则输出-1。因为题目说明了矩阵最大只有10*10，所以可以直接暴力穷举。每次改变之后更新矩阵的状态。注意要开两">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-12T06:02:59.000Z">
+<meta property="og:updated_time" content="2019-04-14T11:31:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="查找给定数组中最大的第k个数">
-<meta name="twitter:description" content="转载自leetcode Q215   STLThis problem needs to use partial sorting. In STL, there are two built-in functions (nth_element and partial_sort) for this.1234567class Solution &amp;#123;public:    int findKthLarg">
+<meta name="twitter:title" content="字节跳动笔试凉经">
+<meta name="twitter:description" content="笔试4.14将近一周前受到的笔试邮件，大好的周日上午就贡献给他了。笔试是在牛客网的平台上，有开摄像头，后台开发岗120分钟5道编程题，可以切出IDE写。第一题给定一个只有0、1、2三个值的矩阵，一次操作可以把与2相邻的所有1变成2，问经过多少次操作之后该矩阵里没有1，如果能做到输出次数，否则输出-1。因为题目说明了矩阵最大只有10*10，所以可以直接暴力穷举。每次改变之后更新矩阵的状态。注意要开两">
   
     <link rel="alternative" href="/atom.xml" title="灰蛋&#39;s blog" type="application/atom+xml">
   
@@ -151,38 +151,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-find-k-largest" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-typedance" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      查找给定数组中最大的第k个数
+      字节跳动笔试凉经
     </h1>
   
 
         
-        <a href="/2019/04/12/find-k-largest/" class="archive-article-date">
-  	<time datetime="2019-04-12T06:02:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
+        <a href="/2019/04/14/typedance/" class="archive-article-date">
+  	<time datetime="2019-04-14T11:31:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60309/C%2B%2B-STL-partition-and-heapsort" target="_blank" rel="noopener">转载自leetcode Q215</a>  </p>
-<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>This problem needs to use partial sorting. In STL, there are two built-in functions (<code>nth_element</code> and <code>partial_sort</code>) for this.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater&lt;int&gt;());</span><br><span class="line">        return nums[k - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        partial_sort(nums.begin(), nums.begin() + k, nums.end(), greater&lt;int&gt;());</span><br><span class="line">        return nums[k - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Note the off-by-1 difference in the second argument of the two built-in functions.<br>We may also use a heap to solve this problem. We can maintain the largest k elements in a heap with the smallest among them at the top. Or we can add all the elements to a heap, with the largest at the top, and then pop the heap for k - 1 times, then the one on the top is our target. The first one is min-heap and the second one is max-heap. In STL, both priority_queue and multiset can be used as a min/max-heap.  </p>
-<h3 id="min-heap-using-priority-queue"><a href="#min-heap-using-priority-queue" class="headerlink" title="min-heap using priority_queue"></a>min-heap using <code>priority_queue</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq;</span><br><span class="line">        for (int num : nums) &#123;</span><br><span class="line">            pq.push(num);</span><br><span class="line">            if (pq.size() &gt; k) &#123;</span><br><span class="line">                pq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return pq.top();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="max-heap-using-priority-queue"><a href="#max-heap-using-priority-queue" class="headerlink" title="max-heap using priority_queue"></a>max-heap using <code>priority_queue</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        priority_queue&lt;int&gt; pq(nums.begin(), nums.end());</span><br><span class="line">        for (int i = 0; i &lt; k - 1; i++) &#123;</span><br><span class="line">            pq.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return pq.top();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="min-heap-using-multiset"><a href="#min-heap-using-multiset" class="headerlink" title="min-heap using multiset"></a>min-heap using <code>multiset</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        multiset&lt;int&gt; mset;</span><br><span class="line">        for (int num : nums) &#123;</span><br><span class="line">            mset.insert(num);</span><br><span class="line">            if (mset.size() &gt; k) &#123;</span><br><span class="line">                mset.erase(mset.begin());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return *mset.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="max-heap-using-multiset"><a href="#max-heap-using-multiset" class="headerlink" title="max-heap using multiset"></a>max-heap using <code>multiset</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        multiset&lt;int, greater&lt;int&gt;&gt; mset(nums.begin(), nums.end());</span><br><span class="line">        for (int i = 0; i &lt; k - 1; i++) &#123;</span><br><span class="line">            mset.erase(mset.begin());</span><br><span class="line">        &#125;</span><br><span class="line">        return *mset.begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h3><p>The partition subroutine of quicksort can also be used to solve this problem. In <code>partition</code>, we divide the array into<br><code>elements&gt;=pivot pivot elements&lt;=pivot</code><br>Then, according to the index of <code>pivot</code>, we will know whther the <code>k</code>th largest element is to the left or right of <code>pivot</code> or just itself.</p>
-<p>In average, this algorithm reduces the size of the problem by approximately one half after each partition, giving the recurrence <code>T(n) = T(n/2) + O(n)</code> with <code>O(n)</code> being the time for partition. The solution is <code>T(n) = O(n)</code>, which means we have found an average linear-time solution. However, in the worst case, the recurrence will become <code>T(n) = T(n - 1) + O(n)</code> and <code>T(n) = O(n^2)</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        int left = 0, right = nums.size() - 1, kth;</span><br><span class="line">        while (true) &#123;</span><br><span class="line">            int idx = partition(nums, left, right);</span><br><span class="line">            if (idx == k - 1) &#123;</span><br><span class="line">                kth = nums[idx];</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (idx &lt; k - 1) &#123;</span><br><span class="line">                left = idx + 1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                right = idx - 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return kth;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int partition(vector&lt;int&gt;&amp; nums, int left, int right) &#123;</span><br><span class="line">        int pivot = nums[left], l = left + 1, r = right;</span><br><span class="line">        while (l &lt;= r) &#123;</span><br><span class="line">            if (nums[l] &lt; pivot &amp;&amp; nums[r] &gt; pivot) &#123;</span><br><span class="line">                swap(nums[l++], nums[r--]);</span><br><span class="line">            &#125;</span><br><span class="line">            if (nums[l] &gt;= pivot) &#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            if (nums[r] &lt;= pivot) &#123;</span><br><span class="line">                r--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums[left], nums[r]);</span><br><span class="line">        return r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Heapsort"><a href="#Heapsort" class="headerlink" title="Heapsort"></a>Heapsort</h3><p>In the above we have presented heap solutions using STL. You may also implement your own heap if you are interested. I suggest you to read the Heapsort chapter of Introduction to Algorithms if you are not familiar with it. The following code implements a max-heap.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        buildMaxHeap(nums);</span><br><span class="line">        for (int i = 0; i &lt; k - 1; i++) &#123;</span><br><span class="line">            swap(nums[0], nums[--heapSize]);</span><br><span class="line">            maxHeapify(nums, 0);</span><br><span class="line">        &#125;</span><br><span class="line">        return nums[0];</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int heapSize;</span><br><span class="line"></span><br><span class="line">    int left(int i) &#123;</span><br><span class="line">        return (i &lt;&lt; 1) + 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int right(int i) &#123;</span><br><span class="line">        return (i &lt;&lt; 1) + 2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void maxHeapify(vector&lt;int&gt;&amp; nums, int i) &#123;</span><br><span class="line">        int largest = i, l = left(i), r = right(i);</span><br><span class="line">        if (l &lt; heapSize &amp;&amp; nums[l] &gt; nums[largest]) &#123;</span><br><span class="line">            largest = l;</span><br><span class="line">        &#125;</span><br><span class="line">        if (r &lt; heapSize &amp;&amp; nums[r] &gt; nums[largest]) &#123;</span><br><span class="line">            largest = r;</span><br><span class="line">        &#125;</span><br><span class="line">        if (largest != i) &#123;</span><br><span class="line">            swap(nums[i], nums[largest]);</span><br><span class="line">            maxHeapify(nums, largest);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void buildMaxHeap(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        heapSize = nums.size();</span><br><span class="line">        for (int i = (heapSize &gt;&gt; 1) - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">            maxHeapify(nums, i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="笔试4-14"><a href="#笔试4-14" class="headerlink" title="笔试4.14"></a>笔试4.14</h3><p>将近一周前受到的笔试邮件，大好的周日上午就贡献给他了。<br>笔试是在牛客网的平台上，有开摄像头，后台开发岗120分钟5道编程题，可以切出IDE写。<br><strong>第一题给定一个只有0、1、2三个值的矩阵，一次操作可以把与2相邻的所有1变成2，问经过多少次操作之后该矩阵里没有1，如果能做到输出次数，否则输出-1。</strong><br><del>因为题目说明了矩阵最大只有10*10，所以可以直接暴力穷举。每次改变之后更新矩阵的状态。注意要开两个矩阵，否则无法判断2是新转换来的还是原来就存在的。如果100次后还存在1，就输出-1。</del><br>想了一下稍微好点的办法是用一个队列，同时维护一个cnt记录2的个数以及一个二维的数组记录是否被访问过。最后看cnt的个数是否等于所有的个数。<br>这题前面花了20分钟折腾输入的问题，因为没给出矩阵的大小，需要从输入来判断，最后输入一个空行表示结束。<br><a id="more"></a></p>
+<hr>
+<p><strong>第二题给定N行输入，每行输入一个数组，其中数组中两两表示一个序列对，相邻数组中都出现的序列对定义为连续序列对。求最长的连续序列对出现次数</strong><br>用一个map将序列映射为一个特定的值，vector存储set&lt;映射值&gt;，因为题目给出总的序列对个数有限，所以可以以映射值为单元进行检索。  </p>
+<hr>
+<p><strong>第三题题目不难，类似之前腾讯贿赂怪兽问题的简易版，给定一个数组D以及一个初始值A，从左到右遍历，若当前值小于D[i]，则A-=(D[i] - A),否则A+=(A - D[i])，过程中不能出现负值到达终点，求最小的初始值是多少？</strong><br>这题其实还是从右往左算方便太多，假设最后到达终点时的值为0，那么初始值的最小值是唯一的。<br>我从左向右算，从1开始逐渐增大至第一次出现负数，这样果然超时了。然后考虑到有最大值，所以可以用二分法做，几个测试用例都过了，但是case只过了2%。之后时间就浪费在上面了，之后看了评论有一种可能是case里的数据都很大，所以用int会溢出。  </p>
+<hr>
+<p><strong>第四题时给定一个地图，以及任意相邻两点之间的火车票价，给定一个起点，求打卡所有地点之后又回到起点的最小花费是多少。</strong><br>一开始看数据不大，题目要求好像是20*20，所以想着dfs去做，结果只过了50%的case，后来加了剪枝之后，还是只有50%。时间到了也没法去想其他算法。感觉应该是专门的套路可以解决这种题目。  </p>
+<hr>
+<p>第五题没时间了大致看了一眼感觉也是需要用算法解。<br>总的来说，感觉字节跳动的笔试题和微软的相似，没有很简单的送分题，也没有特别难的那种让人想半天想不到办法的题目。但是就算想到了办法还是没那么容易写出代码来，不过好在从前几题看测试用例没有那种特别刁难人的，数据量不大所以可以暴力穷举来做。  </p>
 
       
 
@@ -217,7 +214,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -273,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/12/find-k-largest/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/14/typedance/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,18 +284,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/12/ip-route/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          IP、MAC、路由
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/11/find-loop/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">判断一个图是否存在环</div>
+    <a href="/2019/04/13/word-break/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">word_break</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -325,7 +313,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#STL"><span class="toc-number">1.</span> <span class="toc-text">STL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#min-heap-using-priority-queue"><span class="toc-number">2.</span> <span class="toc-text">min-heap using priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#max-heap-using-priority-queue"><span class="toc-number">3.</span> <span class="toc-text">max-heap using priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#min-heap-using-multiset"><span class="toc-number">4.</span> <span class="toc-text">min-heap using multiset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#max-heap-using-multiset"><span class="toc-number">5.</span> <span class="toc-text">max-heap using multiset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Partition"><span class="toc-number">6.</span> <span class="toc-text">Partition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Heapsort"><span class="toc-number">7.</span> <span class="toc-text">Heapsort</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#笔试4-14"><span class="toc-number">1.</span> <span class="toc-text">笔试4.14</span></a></li></ol>
                     </div>
                 </span>
             </div>
