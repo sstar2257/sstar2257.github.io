@@ -79,9 +79,9 @@
 				
 					<a class="github" target="_blank" href="https://github.com/sstar2257" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="mail" target="_blank" href="/chenjiahui.zju@gmail.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="#" title="mail"><i class="icon-mail"></i></a>
 		        
-					<a class="google" target="_blank" href="/www.google.com" title="google"><i class="icon-google"></i></a>
+					<a class="google" target="_blank" href="https://www.google.com" title="google"><i class="icon-google"></i></a>
 		        
 			</div>
 		</nav>
@@ -118,9 +118,9 @@
 					
 						<a class="github" target="_blank" href="https://github.com/sstar2257" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="mail" target="_blank" href="/chenjiahui.zju@gmail.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="#" title="mail"><i class="icon-mail"></i></a>
 			        
-						<a class="google" target="_blank" href="/www.google.com" title="google"><i class="icon-google"></i></a>
+						<a class="google" target="_blank" href="https://www.google.com" title="google"><i class="icon-google"></i></a>
 			        
 				</div>
 			</nav>
@@ -147,6 +147,302 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-signal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/signal/">linux-signal</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/25/signal/" class="archive-article-date">
+  	<time datetime="2019-04-25T11:30:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="信号概述"><a href="#信号概述" class="headerlink" title="信号概述"></a>信号概述</h2><ol>
+<li>信号的名字和编号，以“SIG”开头。<br>信号定义在<code>signal.h</code>中，信号名都为正整数。可以用<code>kill -l</code>查看信号名以及序号(从1开始编号)。  </li>
+<li>信号的处理：</li>
+</ol>
+<ul>
+<li>忽略：大多数信号都可以使用这个方式处理，但是<code>SIGKILL</code>和<code>SIGSTOP</code>不能被忽略。</li>
+<li>捕获：当该信号产生时，由内核来调用用户自定义函数。</li>
+<li>默认动作：当信号产生时，系统执行默认的处理动作。具体的处理如下：
+        
+          <a class="article-more-a" href="/2019/04/25/signal/#more">more >></a>
+        
+      
+
+      
+    </li></ul></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/signal/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-socket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/socket/">socket编程踩坑</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/25/socket/" class="archive-article-date">
+  	<time datetime="2019-04-25T07:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>//TODO</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux, net</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/socket/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-linux-command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/linux-command/">记录一些不是很常用或容易混淆的linux指令，包括快捷键和shell命令。</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/25/linux-command/" class="archive-article-date">
+  	<time datetime="2019-04-25T06:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="命令编辑及光标移动"><a href="#命令编辑及光标移动" class="headerlink" title="命令编辑及光标移动"></a>命令编辑及光标移动</h2><p>删除从开头到光标处的命令文本<br><code>ctrl + u</code><br>删除从光标到结尾处的命令文本<br><code>ctrl + k</code><br>移动光标到命令开头<br><code>ctrl + a</code><br>移动光标到命令结尾<br><code>ctrl + e</code><br>向前移动一个单词<br><code>alt + f</code><br>向后移动一个单词<br><code>alt + b</code><br>删除一个单词<br><code>ctrl + w</code><br>
+        
+          <a class="article-more-a" href="/2019/04/25/linux-command/#more">more >></a>
+        
+      
+
+      
+    </p></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/linux-command/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-memo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/15/memo/">memo</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/15/memo/" class="archive-article-date">
+  	<time datetime="2019-04-15T08:02:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="科学上网的一些原理"><a href="#科学上网的一些原理" class="headerlink" title="科学上网的一些原理"></a><a href="http://hengyunabc.github.io/something-about-science-surf-the-internet/" target="_blank" rel="noopener">科学上网的一些原理</a></h2><p>介绍了一些有关代理的原理性知识，很详细考究。  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/15/memo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-typedance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -479,7 +775,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60309/C%2B%2B-STL-partition-and-heapsort" target="_blank" rel="noopener">转载自leetcode Q215</a>  </p>
-<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>This problem needs to use partial sorting. In STL, there are two built-in functions (<code>nth_element</code> and <code>partial_sort</code>) for this.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findKthLargest(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater&lt;int&gt;());</span><br><span class="line">        return nums[k - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>This problem needs to use partial sorting. In STL, there are two built-in functions (<code>nth_element</code> and <code>partial_sort</code>) for this.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        nth_element(nums.begin(), nums.begin() + k - <span class="number">1</span>, nums.end(), greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">        <span class="keyword">return</span> nums[k - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
         
           <a class="article-more-a" href="/2019/04/12/find-k-largest/#more">more >></a>
         
@@ -618,241 +914,10 @@
 
 
   
-    <article id="post-process-scheduling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/10/process-scheduling/">进程调度</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/10/process-scheduling/" class="archive-article-date">
-  	<time datetime="2019-04-10T06:38:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h3><ul>
-<li><em>FCFS（先来先服务）</em>：当每个进程就绪后，加入就绪队列。当前正在运行的进程停止执行时，选择在就绪队列中存在时间最长的进程执行。执行长进程比短进程好，通常与优先级策略相结合。  </li>
-<li><em>轮转</em>：以一个周期性间隔产生时钟中断，当中断发生时，当前正在运行的进程被置于就绪队列中，然后基于FCFS策略选择下一个就绪作业运行。  <blockquote>
-<p>虚拟轮转法：解除了IO阻塞的进程都被转移到一个FCFS辅助队列中，当进行一个调度决策时，辅助队列中的进程优先于就绪队列中的进程。  </p>
-</blockquote>
-</li>
-<li><em>最短进程优先（非抢占）</em>：下一次选择预计处理时间最短的进程，需要预先直到每个进程所需要的处理时间。  </li>
-<li><em>最短剩余时间（抢占）</em>：选择预期剩余时间最短的进程。存在长进程长期饥饿的危险。</li>
-<li><em>最高响应比优先</em>：调度规则在当前进程完成或被阻塞时，选择R=（w+s）/s最大的就绪进程。（w为等待处理器的时间，s为预计的服务时间）。当偏向短作业时，长进程由于w的不断增加，从而增大比值赢得短进程。  </li>
-<li><em>反馈</em>：调度基于抢占原则并且使用动态优先级机制。当一个进程第一次进入系统中时，被放置在RQ0，当它第一次被抢占后并返回就绪状态时，放到RQ1。在随后的时间里，每当它被抢占时，它被降级到下一个低优先级队列中。<blockquote>
-<p>一个短进程会很快执行完，不会在就绪队列中降很多级。一个长进程会逐级相加。因此新到的进程和短进程优先于老进程和长进程。  </p>
-</blockquote>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">os</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/10/process-scheduling/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-buddy-system-and-slab" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/09/buddy-system-and-slab/">伙伴系统、slab</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/09/buddy-system-and-slab/" class="archive-article-date">
-  	<time datetime="2019-04-09T14:10:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>内核内存管理的一项重要工作就是如何在频繁申请释放内存的情况下，避免碎片的产生。这就要求内核采取灵活而恰当的内存分配策略。通常，内存分配一般有两种情况：大对象（大的连续空间分配）、小对象（小的空间分配）。针对不同的需求，Linux分别采取了伙伴系统算法和SLAB进行内存分配。  </p>
-<h3 id="伙伴系统："><a href="#伙伴系统：" class="headerlink" title="伙伴系统："></a>伙伴系统：</h3><p>把所有的空闲页框分为11个块链表，每个块链表中的结点分别是大小为1，2，4，8，16，32，64，128，256，512和1024个连续页框的页框块。最大的页框块包含1024个连续页框，对应4MB大小的连续内存。假设要申请一个256个页框的块，则先从结点为256个连续页框块的链表中查找空闲块，如果没有，就去512个页框的链表中找，找到了则将页框块分为2个256个页框的块，一个分配给应用，另外一个移到256个页框的链表中。如果512个页框的链表中仍没有空闲块，继续向1024个页框的链表查找—分割—分配和转移。如果仍然没有，则返回错误。使用过的页框块在释放时，会主动将两个连续的页框块合并为一个较大的页框块，然后作为结点插入相应规格的链表中。<br>伙伴系统很好地解决了外部碎片（页框之间的碎片）问题。<br>
-        
-          <a class="article-more-a" href="/2019/04/09/buddy-system-and-slab/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">os</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/09/buddy-system-and-slab/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/05/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-05T07:55:07.856Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/05/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -950,15 +1015,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">graph</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">graph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux, net</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1016,10 +1089,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	<section class="tools-section tools-section-friends" q-show="friends">
   		
         <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
           
             <li class="search-li">
               <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="灰蛋&#39;s blog">
 <meta property="og:description" content="内核内存管理的一项重要工作就是如何在频繁申请释放内存的情况下，避免碎片的产生。这就要求内核采取灵活而恰当的内存分配策略。通常，内存分配一般有两种情况：大对象（大的连续空间分配）、小对象（小的空间分配）。针对不同的需求，Linux分别采取了伙伴系统算法和SLAB进行内存分配。   伙伴系统：把所有的空闲页框分为11个块链表，每个块链表中的结点分别是大小为1，2，4，8，16，32，64，128，25">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-12T07:52:30.529Z">
+<meta property="og:updated_time" content="2019-04-25T06:36:30.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="伙伴系统、slab">
 <meta name="twitter:description" content="内核内存管理的一项重要工作就是如何在频繁申请释放内存的情况下，避免碎片的产生。这就要求内核采取灵活而恰当的内存分配策略。通常，内存分配一般有两种情况：大对象（大的连续空间分配）、小对象（小的空间分配）。针对不同的需求，Linux分别采取了伙伴系统算法和SLAB进行内存分配。   伙伴系统：把所有的空闲页框分为11个块链表，每个块链表中的结点分别是大小为1，2，4，8，16，32，64，128，25">
@@ -84,9 +84,9 @@
 				
 					<a class="github" target="_blank" href="https://github.com/sstar2257" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="mail" target="_blank" href="/chenjiahui.zju@gmail.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="#" title="mail"><i class="icon-mail"></i></a>
 		        
-					<a class="google" target="_blank" href="/www.google.com" title="google"><i class="icon-google"></i></a>
+					<a class="google" target="_blank" href="https://www.google.com" title="google"><i class="icon-google"></i></a>
 		        
 			</div>
 		</nav>
@@ -123,9 +123,9 @@
 					
 						<a class="github" target="_blank" href="https://github.com/sstar2257" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="mail" target="_blank" href="/chenjiahui.zju@gmail.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="#" title="mail"><i class="icon-mail"></i></a>
 			        
-						<a class="google" target="_blank" href="/www.google.com" title="google"><i class="icon-google"></i></a>
+						<a class="google" target="_blank" href="https://www.google.com" title="google"><i class="icon-google"></i></a>
 			        
 				</div>
 			</nav>
@@ -432,15 +432,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">graph</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">graph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux, net</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,10 +506,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	<section class="tools-section tools-section-friends" q-show="friends">
   		
         <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
           
             <li class="search-li">
               <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
