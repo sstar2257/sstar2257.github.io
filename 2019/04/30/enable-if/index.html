@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>灰蛋&#39;s blog</title>
+  <title>(翻)国外一篇很好的关于enable_if的介绍 | 灰蛋&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="灰蛋&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="原文链接 背景在C++中将函数重载与模板混合时，必须考虑一个有趣的问题。由于模板过于包容，以至于当与重载混合时，结果可能会令人惊讶：12345678void foo(unsigned i) &amp;#123;  std::cout &amp;lt;&amp;lt; &quot;unsigned &quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &quot;\n&quot;;&amp;#125;template &amp;lt;typename T&amp;gt;void foo">
+<meta name="keywords" content="template,c++11,c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(翻)国外一篇很好的关于enable_if的介绍">
+<meta property="og:url" content="http://yoursite.com/2019/04/30/enable-if/index.html">
 <meta property="og:site_name" content="灰蛋&#39;s blog">
+<meta property="og:description" content="原文链接 背景在C++中将函数重载与模板混合时，必须考虑一个有趣的问题。由于模板过于包容，以至于当与重载混合时，结果可能会令人惊讶：12345678void foo(unsigned i) &amp;#123;  std::cout &amp;lt;&amp;lt; &quot;unsigned &quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &quot;\n&quot;;&amp;#125;template &amp;lt;typename T&amp;gt;void foo">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-30T15:33:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灰蛋&#39;s blog">
+<meta name="twitter:title" content="(翻)国外一篇很好的关于enable_if的介绍">
+<meta name="twitter:description" content="原文链接 背景在C++中将函数重载与模板混合时，必须考虑一个有趣的问题。由于模板过于包容，以至于当与重载混合时，结果可能会令人惊讶：12345678void foo(unsigned i) &amp;#123;  std::cout &amp;lt;&amp;lt; &quot;unsigned &quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; &quot;\n&quot;;&amp;#125;template &amp;lt;typename T&amp;gt;void foo">
   
     <link rel="alternative" href="/atom.xml" title="灰蛋&#39;s blog" type="application/atom+xml">
   
@@ -146,16 +151,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-enable-if" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-enable-if" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/30/enable-if/">(翻)国外一篇很好的关于enable_if的介绍</a>
+    <h1 class="article-title" itemprop="name">
+      (翻)国外一篇很好的关于enable_if的介绍
     </h1>
   
 
@@ -170,14 +173,55 @@
       
         <p><a href="https://eli.thegreenplace.net/2014/sfinae-and-enable_if/" target="_blank" rel="noopener">原文链接</a></p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在C++中将函数重载与模板混合时，必须考虑一个有趣的问题。由于模板过于包容，以至于当与重载混合时，结果可能会令人惊讶：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">unsigned</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"unsigned "</span> &lt;&lt; i &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">const</span> T&amp; t)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"template "</span> &lt;&lt; t &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>当调用<code>foo(42)</code>时，打印的结果是<code>template 42</code>。因为42默认是一个<code>signed int</code>类型（42U则为unsigned int），当编译器检查重载时，第一个函数需要一次转换（int to unsigned int），而第二个模板则是完全匹配，所以它选择了第二个。<br>
-        
-          <a class="article-more-a" href="/2019/04/30/enable-if/#more">more >></a>
-        
+<p>当调用<code>foo(42)</code>时，打印的结果是<code>template 42</code>。因为42默认是一个<code>signed int</code>类型（42U则为unsigned int），当编译器检查重载时，第一个函数需要一次转换（int to unsigned int），而第二个模板则是完全匹配，所以它选择了第二个。<br><a id="more"></a><br><em>但是当第一个函数的类型为int时，函数重载则会选择第一个，因为在重载的决议中，非模板函数优先级高于模板</em><br>当编译器查看作为模板的重载候选项时，它必须实际执行将显式指定或推导类型替换为模板参数。这并不一定会产生敏感的代码，如下面的代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">negate</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> -i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">typename</span> T::<span class="function">value_type <span class="title">negate</span><span class="params">(<span class="keyword">const</span> T&amp; t)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> -T(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当调用<code>negate(42)</code>时，编译器会选择第一个函数并返回-42。然而，当寻找最完美的重载匹配时，所有的候选项都必须被考虑。当编译器考虑第二个模板<code>negate</code>时，它将推到类型（此例中为int）替入模板，然后就会得到下面的解释：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>::<span class="function">value_type <span class="title">negate</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; t)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>上面这串代码是有问题的，因为<code>int</code>并没有叫做<code>value_type</code>的类型。但是编译器并不会报错，事实上，C++标准对于这样的情况有一个特别的条款，来准确解释编译器的行为。  </p>
+<h2 id="SFINAE"><a href="#SFINAE" class="headerlink" title="SFINAE"></a>SFINAE</h2><p>在C++11标准的最新草稿中，14.8.2节中描述了相关的内容：<br>当一个替代错误发生时（比如上面的例子中，对于某些特定类型的类型推断错误）,并不会产生错误。编译器会简单地忽略这个候选项而去查看其他的。<br>在C++中，这个规则被称为“Substitution Failure Is Not An Error”，简称<strong>“SFINAE”</strong>  </p>
+<blockquote>
+<p>C++中的具体条款如下：<br> If a substitution results in an invalid type or expression, type deduction fails. An invalid type or expression is one that would be ill-formed if written using the substituted arguments. Only invalid types and expressions in the immediate context of the function type and its template parameter types can result in a deduction failure.<br> 如果一个替代会导致无效的类型或表达式，类型推断会错误。无效的类型或表达式为：使用替代参数之后会产生错误的组织。只有函数类型和它的模板参数类型的最近上下文中的无效类型或表达式会导致推断失败。  </p>
+</blockquote>
+<p>然后列出可能被认为无效的可能方案，比如在限定名称中使用不是类或枚举类型的类型，尝试创建对void的引用等。<br>关于上面提到的“最近上下文”，考虑下面这个例子：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">negate</span><span class="params">(<span class="keyword">const</span> T&amp; t)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">typename</span> T::value_type n = -t();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果上面这个重载匹配一些基本类型，会因为函数体内的<code>T::value_type</code>得到一个编译错误。因为这个超出了“函数类型和模板参数地最近上下文”<em>（这里的个人理解，这个问题出现在模板替换之后，而不是在模板替换之时，如在const T&amp; t中或是在typename T中，结合下面<code>enable_if</code>的使用应该会容易理解一些）</em>。<br>从上面这个例子中，我们可以了解到，如果我们要写一个只对某些类型有意义的模板，我们必须使它对于某些无效类型失败在类型推导中，因为这样只会产生推导失败，使得编译器忽视这个候选项而不是产生编译错误。  </p>
+<h2 id="enable-if-—-编译时模板的选择"><a href="#enable-if-—-编译时模板的选择" class="headerlink" title="enable_if —-编译时模板的选择"></a>enable_if —-编译时模板的选择</h2><p>SFINAE被证明是有用的，以至于程序员在早期地C++中就明确使用这个。一个最值得关注的基于这个目的的工具就是<code>enable_if</code>，它的定义如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">bool</span>, <span class="keyword">typename</span> T = <span class="keyword">void</span>&gt;</span><br><span class="line">struct enable_if</span><br><span class="line">&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">enable_if</span>&lt;true, T&gt; &#123;</span></span><br><span class="line">  <span class="keyword">typedef</span> T type;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以写出这样的代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>,</span></span><br><span class="line"><span class="class">         <span class="title">typename</span> <span class="title">std</span>:</span>:enable_if&lt;<span class="built_in">std</span>::is_integral&lt;T&gt;::value,</span><br><span class="line">                                 T&gt;::type* = <span class="literal">nullptr</span>&gt;</span><br><span class="line"><span class="keyword">void</span> do_stuff(T&amp; t) &#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"do_stuff integral\n"</span>;</span><br><span class="line">    <span class="comment">// an implementation for integral types (int, char, unsigned, etc.)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>,</span></span><br><span class="line"><span class="class">          <span class="title">typename</span> <span class="title">std</span>:</span>:enable_if&lt;<span class="built_in">std</span>::is_class&lt;T&gt;::value,</span><br><span class="line">                                  T&gt;::type* = <span class="literal">nullptr</span>&gt;</span><br><span class="line"><span class="keyword">void</span> do_stuff(T&amp; t) &#123;</span><br><span class="line">    <span class="comment">// an implementation for class types</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意在这里的SFINAE。当我们调用<code>do_stuff&lt;int&gt;</code>时，编译器会选择第一个重载,因为<code>std::is_integral&lt;int&gt;</code>为真，然后<code>struct enable_if</code>条件为真的特例被使用，因此它的内置<code>type</code>被设置为<code>int</code>。第二个重载被忽略，因为<code>std::is_class&lt;int&gt;</code>为假，使用的是<code>struct enable_if</code>条件为假时的特例，然后该特例没有变量<code>type</code>，所以会导致替换失败（而不会返回编译错误）。<br><code>enable_if</code>在Boost中很早就已经被使用，但是在标准C++库中，是从C++11才开始正式使用。在C++14中，为了使用方便，增加了新的别名如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">bool</span> B, <span class="keyword">typename</span> T = <span class="keyword">void</span>&gt;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">enable_if_t</span> = <span class="keyword">typename</span> enable_if&lt;B, T&gt;::type;</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>enable_if_t</code>，上面的例子可以改写为：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>,</span></span><br><span class="line"><span class="class">         <span class="title">typename</span> <span class="title">std</span>:</span>:<span class="keyword">enable_if_t</span>&lt;<span class="built_in">std</span>::is_integral&lt;T&gt;::value&gt;* = <span class="literal">nullptr</span>&gt;</span><br><span class="line"><span class="keyword">void</span> do_stuff(T&amp; t) &#123;</span><br><span class="line">    <span class="comment">// an implementation for integral types (int, char, unsigned, etc.)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;class T,</span><br><span class="line">          <span class="keyword">typename</span> <span class="built_in">std</span>::<span class="keyword">enable_if_t</span>&lt;<span class="built_in">std</span>::is_class&lt;T&gt;::value&gt;* = <span class="literal">nullptr</span>&gt;</span><br><span class="line"><span class="keyword">void</span> do_stuff(T&amp; t) &#123;</span><br><span class="line">    <span class="comment">// an implementation for class types</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="enable-if的使用"><a href="#enable-if的使用" class="headerlink" title="enable_if的使用"></a>enable_if的使用</h2><p><code>enable_if</code>是一个非常实用的工具，在C++11标准模板库中多次被提及。因为它是<code>type traits</code>（一种限制模板转换为那些具有特定属性的类型的方式）的核心部分。<br>如果没有<code>enable_if</code>，当我们使用模板参数定义一个函数时，这个函数会去适配所有可能得类型。有了<code>type traits</code>和<code>enable_if</code>，我们可以针对不同的类型创建不同的函数。</p>
+<blockquote>
+<p>这是在使用模板和重载的一种折中方式，C++又另外的工具可以在运行时实现类似的功能。但是<code>type traits</code>使我们在编译时就可以完成这项工作，而不必在运行时造成额外的开销。  </p>
+</blockquote>
+<p>一个很有用的例子是构造具有两个参数的<code>std::vector</code><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create the vector &#123;8, 8, 8, 8&#125;</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1(<span class="number">4</span>, <span class="number">8</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create another vector &#123;8, 8, 8, 8&#125;</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2(<span class="built_in">std</span>::begin(v1), <span class="built_in">std</span>::end(v1));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create the vector &#123;1, 2, 3, 4&#125;</span></span><br><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v3(arr, arr + <span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
+<p>上面使用了两种形式的双参数构造。忽略分配器，这些构造函数应该是这么定义的：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">vector</span> &#123;</span></span><br><span class="line">    <span class="built_in">vector</span>(size_type n, <span class="keyword">const</span> T val);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="title">vector</span>(<span class="title">InputIterator</span> <span class="title">first</span>, <span class="title">InputIterator</span> <span class="title">last</span>);</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面两个构造函数都有两个参数，但第二个函数具有模板的“catch-all”属性。尽管模板参数<code>InputIterator</code>有描述性的名字，但是它没有语义含义。编译器不会介意它被叫做什么。<br>问题在于，即使是构造v1的时候，如果不做一些特别的工作，第二个构造函数依旧会被考虑。这是因为<code>4</code>的类型是<code>int</code>而不是<code>size_t</code>，所以去适配第一个函数时，编译器需要做一次类型转换，而第二个则是完全匹配。<br>为了避免这个问题，使第二个函数仅被迭代器调用，这时候就需要用到<code>enable_if</code>。<br>下面是第二个构造函数的实际定义：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> _<span class="title">InputIterator</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">vector</span>(_<span class="title">InputIterator</span> __<span class="title">first</span>,</span></span><br><span class="line"><span class="class">       <span class="title">typename</span> <span class="title">enable_if</span>&lt;__is_input_iterator&lt;_InputIterator&gt;::value &amp;&amp;</span></span><br><span class="line"><span class="class">                          !__is_forward_iterator&lt;_InputIterator&gt;::value &amp;&amp;</span></span><br><span class="line"><span class="class">                          ... more conditions ...</span></span><br><span class="line"><span class="class">                          _InputIterator&gt;:</span>:type __last);</span><br></pre></td></tr></table></figure></p>
+<p>这里使用了<code>enable_if</code>使其只有当输入为输入迭代器的时候才被使用。对于前向迭代器，有另外的重载，可以使执行效率更高。<br>就像之前提到的，C++11标准库里用到了很多<code>enable_if</code>。比如<code>string::append</code>就用了和上面很像的一种方法。<br>有一些不同的例子是<code>std::signbit</code>，被设计于定义所有的算数类型。下面是一个简单的关于它的定义版本（在cmath中可以找到）<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">typename</span> <span class="title">std</span>:</span>:enable_if&lt;<span class="built_in">std</span>::is_arithmetic&lt;T&gt;, <span class="keyword">bool</span>&gt;::type</span><br><span class="line">signbit(T x)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// implementation</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果不使用<code>enable_if</code>，请考虑库实现者可能的实现： 一种是为每种已知算术类型重载函数。那非常冗长。另一种方法是使用不受限制的模板。但是，如果我们向它传递一个错误的类型，比如<code>std::string</code>时，我们很可能在使用时遇到一个相当模糊的错误。 使用<code>enable_if</code>，我们既不需要编写样板文件，也不会产生错误的错误消息。如果我们使用错误类型调用上面定义的<code>std::signbit</code>，我们将得到一个相当有用的错误，指出无法找到合适的函数。  </p>
+<h2 id="一种更加先进的enable-if版本"><a href="#一种更加先进的enable-if版本" class="headerlink" title="一种更加先进的enable_if版本"></a>一种更加先进的enable_if版本</h2><p>不可否认，<code>std::enable_if</code>是笨拙的，甚至<code>enable_if_t</code>都没有多大帮助，尽管它稍微简洁了一点点。我们仍然需要以一种经常模糊返回类型或参数类型的方式将它混合到函数声明中。这就是为什么网上的一些消息建议制作更高级的高级版本。就作者而言，他认为这是一个错误的权衡。<br><code>std::enable_if</code>是一个很少使用的构造。因此，减少冗长不会给我们带来太大的影响。另一方面，使它更神秘是有害的，因为每次我们看到它，我们必须考虑它是如何工作的。 本文显示的一些实现是非常简单的情况。 最后作者提出，C ++标准库使用了详细的“笨拙”版本的<code>std::enable_if</code>，而没有定义更复杂的版本。他觉得这是正确的决定。  </p>
+
       
 
       
-    </p></div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -203,16 +247,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/30/enable-if/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/30/enable-if/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/25/signal/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux-signal</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -227,711 +330,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-signal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/signal/">linux-signal</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/25/signal/" class="archive-article-date">
-  	<time datetime="2019-04-25T11:30:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="信号概述"><a href="#信号概述" class="headerlink" title="信号概述"></a>信号概述</h2><ol>
-<li>信号的名字和编号，以“SIG”开头。<br>信号定义在<code>signal.h</code>中，信号名都为正整数。可以用<code>kill -l</code>查看信号名以及序号(从1开始编号)。  </li>
-<li>信号的处理：</li>
-</ol>
-<ul>
-<li>忽略：大多数信号都可以使用这个方式处理，但是<code>SIGKILL</code>和<code>SIGSTOP</code>不能被忽略。</li>
-<li>捕获：当该信号产生时，由内核来调用用户自定义函数。</li>
-<li>默认动作：当信号产生时，系统执行默认的处理动作。具体的处理如下：
-        
-          <a class="article-more-a" href="/2019/04/25/signal/#more">more >></a>
-        
-      
-
-      
-    </li></ul></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/signal/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SFINAE"><span class="toc-number">2.</span> <span class="toc-text">SFINAE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#enable-if-—-编译时模板的选择"><span class="toc-number">3.</span> <span class="toc-text">enable_if —-编译时模板的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#enable-if的使用"><span class="toc-number">4.</span> <span class="toc-text">enable_if的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一种更加先进的enable-if版本"><span class="toc-number">5.</span> <span class="toc-text">一种更加先进的enable_if版本</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-socket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/socket/">socket编程踩坑</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/25/socket/" class="archive-article-date">
-  	<time datetime="2019-04-25T07:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>情景：在看一份古早的tinyhttpd代码时，进行client和server的通信测试时遇到一个问题，当客户端被关闭时（主动/被动），服务端有一定概率结束，同时没有任何异常打印。</p>
-</blockquote>
-<p>解决方法：在代码的各个部分加了很多打印，发现每次异常关闭时，程序没有打印该有的退出信息，所以首先可以确定程序是非正常退出。其次，每次退出没有规律可循，试了很多次，有时候是一次就直接关闭，有时候却能正常执行多次。所以感觉应该不是应用程序级别的行为，也没有看到程序运行崩溃等消息，所以判断是更底层（内核）级别的问题。最后确定的是，每次程序退出，都是在调用send前后发生，所以从上面找原因，google之终于找到了。<br>一句话总结：当往一个已经收到RST响应的套接字发数据时，系统会发送一个SIGPIPE信号给进程，进程对于SIGPIPE的默认行为是结束进程。<br>所以简单的解决方法有两个：一个是优化代码不往已经关闭的套接字写数据，一个是捕获SIGPIPE信号替换掉默认的终止行为。捕获了信号之后，果然服务器就不会突然关闭了。还可以将send的第四个flags参数设置为MSG_NOSIGNAL。    </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">net</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/socket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux-command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/linux-command/">记录一些不是很常用或容易混淆的linux指令，包括快捷键和shell命令。</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/25/linux-command/" class="archive-article-date">
-  	<time datetime="2019-04-25T06:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="命令编辑及光标移动"><a href="#命令编辑及光标移动" class="headerlink" title="命令编辑及光标移动"></a>命令编辑及光标移动</h2><p>删除从开头到光标处的命令文本<br><code>ctrl + u</code><br>删除从光标到结尾处的命令文本<br><code>ctrl + k</code><br>移动光标到命令开头<br><code>ctrl + a</code><br>移动光标到命令结尾<br><code>ctrl + e</code><br>向前移动一个单词<br><code>alt + f</code><br>向后移动一个单词<br><code>alt + b</code><br>删除一个单词<br><code>ctrl + w</code><br>
-        
-          <a class="article-more-a" href="/2019/04/25/linux-command/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/25/linux-command/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-memo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/15/memo/">memo</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/15/memo/" class="archive-article-date">
-  	<time datetime="2019-04-15T08:02:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://hengyunabc.github.io/something-about-science-surf-the-internet/" target="_blank" rel="noopener">科学上网的一些原理</a><br>介绍了一些有关代理的原理性知识，很详细考究。  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/15/memo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-typedance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/14/typedance/">字节跳动笔试凉经</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/14/typedance/" class="archive-article-date">
-  	<time datetime="2019-04-14T11:31:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="笔试4-14"><a href="#笔试4-14" class="headerlink" title="笔试4.14"></a>笔试4.14</h3><p>将近一周前受到的笔试邮件，大好的周日上午就贡献给他了。<br>笔试是在牛客网的平台上，有开摄像头，后台开发岗120分钟5道编程题，可以切出IDE写。<br><strong>第一题给定一个只有0、1、2三个值的矩阵，一次操作可以把与2相邻的所有1变成2，问经过多少次操作之后该矩阵里没有1，如果能做到输出次数，否则输出-1。</strong><br><del>因为题目说明了矩阵最大只有10*10，所以可以直接暴力穷举。每次改变之后更新矩阵的状态。注意要开两个矩阵，否则无法判断2是新转换来的还是原来就存在的。如果100次后还存在1，就输出-1。</del><br>想了一下稍微好点的办法是用一个队列，同时维护一个cnt记录2的个数以及一个二维的数组记录是否被访问过。最后看cnt的个数是否等于所有的个数。<br>这题前面花了20分钟折腾输入的问题，因为没给出矩阵的大小，需要从输入来判断，最后输入一个空行表示结束。<br>
-        
-          <a class="article-more-a" href="/2019/04/14/typedance/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/14/typedance/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-word-break" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/word-break/">word_break</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/word-break/" class="archive-article-date">
-  	<time datetime="2019-04-13T03:10:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="139-Word-Break"><a href="#139-Word-Break" class="headerlink" title="139. Word Break"></a>139. Word Break</h3><p>给定一个非空字符串S，以及一个字典集D，输出S是否能由D中的字符串拼接而成。<br><img src="/img/pic139.png" alt="q139"><br>一个比较好的算法是用动态规划去解决。新建一个S.size()长度的bool数组，对于数组的第N位，表示该位置能否由前面某个位置M加上一个N-M长度字符串拼接而成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool wordBreak(string s, vector&lt;string&gt;&amp; wordDict) &#123;</span><br><span class="line">        int len_s = s.size();</span><br><span class="line">        bool *dp = new bool[len_s+1]();</span><br><span class="line">        int len_w = wordDict.size();</span><br><span class="line">        dp[0] = true;</span><br><span class="line">        for(int i=0;i&lt;len_s;++i)&#123;</span><br><span class="line">            for(int j=0;j&lt;len_w;++j)&#123;</span><br><span class="line">                if(dp[i])&#123;</span><br><span class="line">                    string tmp = s.substr(i, wordDict[j].size());</span><br><span class="line">                    if(tmp == wordDict[j])&#123;</span><br><span class="line">                        dp[i + tmp.size()] = true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[len_s];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/word-break/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-max-rectangle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/12/max-rectangle/">max_rectangle</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/12/max-rectangle/" class="archive-article-date">
-  	<time datetime="2019-04-12T13:42:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="刷leetcode遇到的求二维矩阵最大面积的题目，记录下"><a href="#刷leetcode遇到的求二维矩阵最大面积的题目，记录下" class="headerlink" title="刷leetcode遇到的求二维矩阵最大面积的题目，记录下"></a>刷leetcode遇到的求二维矩阵最大面积的题目，记录下</h2><h3 id="Largest-Rectangle-in-Histogram-给定一个一维数组代表柱状图，求最大的矩形面积。"><a href="#Largest-Rectangle-in-Histogram-给定一个一维数组代表柱状图，求最大的矩形面积。" class="headerlink" title="Largest Rectangle in Histogram 给定一个一维数组代表柱状图，求最大的矩形面积。"></a><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">Largest Rectangle in Histogram</a> 给定一个一维数组代表柱状图，求最大的矩形面积。</h3><p><img src="/img/pic84.png" alt="q84"><br>
-        
-          <a class="article-more-a" href="/2019/04/12/max-rectangle/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/12/max-rectangle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ip-route" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/12/ip-route/">IP、MAC、路由</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/12/ip-route/" class="archive-article-date">
-  	<time datetime="2019-04-12T07:43:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="IP数据包经由路由转发的时候源IP，目的ip是否改变？"><a href="#IP数据包经由路由转发的时候源IP，目的ip是否改变？" class="headerlink" title="IP数据包经由路由转发的时候源IP，目的ip是否改变？"></a>IP数据包经由路由转发的时候源IP，目的ip是否改变？</h3><p>这是个搞网络的基础问题，答案是不能改变的，除非做了nat转换才能改变。否则，数据包在整个传输过程中，源IP和目的IP不会发生改变。<br>不过MAC地址是变化的，因为发送端开始不知道目的主机的MAC地址，所以每经过一个路由器，MAC地址都会发生变化。<br>
-        
-          <a class="article-more-a" href="/2019/04/12/ip-route/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">net</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/12/ip-route/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-find-k-largest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/12/find-k-largest/">查找给定数组中最大的第k个数</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/12/find-k-largest/" class="archive-article-date">
-  	<time datetime="2019-04-12T06:02:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60309/C%2B%2B-STL-partition-and-heapsort" target="_blank" rel="noopener">转载自leetcode Q215</a>  </p>
-<h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>This problem needs to use partial sorting. In STL, there are two built-in functions (<code>nth_element</code> and <code>partial_sort</code>) for this.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        nth_element(nums.begin(), nums.begin() + k - <span class="number">1</span>, nums.end(), greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">        <span class="keyword">return</span> nums[k - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/04/12/find-k-largest/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/12/find-k-largest/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -954,8 +378,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

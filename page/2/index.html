@@ -148,6 +148,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-find-loop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/11/find-loop/">判断一个图是否存在环</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/11/find-loop/" class="archive-article-date">
+  	<time datetime="2019-04-11T07:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h2><h3 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h3><p>对于有向图进行拓扑排序可以判断是否存在环。<br>对于有向图的拓扑排序，大家都知道的kahn算法：  </p>
+<ol>
+<li>计算图中所有点的入度，把入度为0的点加入栈</li>
+<li>如果栈非空：<br>取出栈顶顶点a，输出该顶点值，删除该顶点<br>从图中删除所有以a为起始点的边，如果删除的边的另一个顶点入度为0，则把它入栈</li>
+<li>如果图中还存在顶点，则表示图中存在环；否则输出的顶点就是一个拓扑排序序列</li>
+</ol>
+<h3 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h3><p>无向图的算法2</p>
+<h3 id="算法3"><a href="#算法3" class="headerlink" title="算法3"></a>算法3</h3><p>根据有向图的强连通分量算法，每个强连通分量中必定存在环，因为根据强连通分量的定义：从顶点 i 到 j 有一条路径，并且从 j 到 i 也有一条路径。求强连通分量的算法可以参考<a href="https://zh.wikipedia.org/wiki/强连通分量" target="_blank" rel="noopener">维基百科</a>。  </p>
+        
+          <a class="article-more-a" href="/2019/04/11/find-loop/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">graph</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/11/find-loop/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-process-scheduling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -480,11 +563,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">graph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">os</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">graph</a>
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">c++11</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,15 +587,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux, net</a>
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,10 +600,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">net</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">linux, net, 随笔</a>
               </li>
             
             <div class="clearfix"></div>
