@@ -2,7 +2,7 @@
 title: socket编程踩坑
 date: 2019-04-25 15:27:29
 updated: 2019-04-25 15:27:29
-tags: linux, net, 随笔
+tags: [随笔, linux, net]
 ---
 
 > 情景：在看一份古早的tinyhttpd代码时，进行client和server的通信测试时遇到一个问题，当客户端被关闭时（主动/被动），服务端有一定概率结束，同时没有任何异常打印。
