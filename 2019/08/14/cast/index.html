@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 灰蛋&#39;s blog</title>
+  <title>灰蛋&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="C++类型转换 基本数据类型转换规则：  浮点型数据赋值给整型变量时，舍弃小数部分 整型数据赋值给浮点型数据时，数值不变但是以指数方式存储 字符型数据以ASCII码的形式赋值给整型变量 long、int、short、char向下赋值时，会舍弃高位数据 有符号数赋值给一个无符号类型时，不做转换直接进行内存拷贝，所以一个很小的负数可能变成一个很大的正数  C++的四个强转关键字 static_cast">
+<meta property="og:type" content="article">
 <meta property="og:title" content="灰蛋&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/2/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/14/cast/index.html">
 <meta property="og:site_name" content="灰蛋&#39;s blog">
+<meta property="og:description" content="C++类型转换 基本数据类型转换规则：  浮点型数据赋值给整型变量时，舍弃小数部分 整型数据赋值给浮点型数据时，数值不变但是以指数方式存储 字符型数据以ASCII码的形式赋值给整型变量 long、int、short、char向下赋值时，会舍弃高位数据 有符号数赋值给一个无符号类型时，不做转换直接进行内存拷贝，所以一个很小的负数可能变成一个很大的正数  C++的四个强转关键字 static_cast">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-14T14:07:26.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="灰蛋&#39;s blog">
+<meta name="twitter:description" content="C++类型转换 基本数据类型转换规则：  浮点型数据赋值给整型变量时，舍弃小数部分 整型数据赋值给浮点型数据时，数值不变但是以指数方式存储 字符型数据以ASCII码的形式赋值给整型变量 long、int、short、char向下赋值时，会舍弃高位数据 有符号数赋值给一个无符号类型时，不做转换直接进行内存拷贝，所以一个很小的负数可能变成一个很大的正数  C++的四个强转关键字 static_cast">
   
     <link rel="alternative" href="/atom.xml" title="灰蛋&#39;s blog" type="application/atom+xml">
   
@@ -146,242 +150,235 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cast" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h2>C++类型转换</h2><p></p>
+<p></p><h3>基本数据类型转换规则：</h3><p></p>
+<ul>
+<li>浮点型数据赋值给整型变量时，舍弃小数部分</li>
+<li>整型数据赋值给浮点型数据时，数值不变但是以指数方式存储</li>
+<li>字符型数据以ASCII码的形式赋值给整型变量</li>
+<li>long、int、short、char向下赋值时，会舍弃高位数据</li>
+<li>有符号数赋值给一个无符号类型时，不做转换直接进行内存拷贝，所以一个很小的负数可能变成一个很大的正数</li>
+</ul>
+<p></p><h3>C++的四个强转关键字</h3><p></p>
+<h3 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h3><p>   用法：static_cast &lt;类型说明符&gt; （变量或表达式）</p>
+<p>   1.用于基本数据类型之间的转换，安全性需要开发人员自己保证</p>
+<p>   2.将void*指针转换成目标类型的指针（注意只能是void*，类似int*到char*之类的转换会被编译器阻止，然后在C语言中进行基本类型指针之间的强转是被接受的）</p>
+<pre><code>&gt; 空指针与void*指针（通用变体类型指针）是不同的！
+</code></pre><blockquote>
+</blockquote>
+<pre><code>&gt; void *可以指向任何类型对象的地址，表示这是一个指针，和地址有关，但是不知道该地址上的对象的类型。void\*指针不能直接解引用，必须先赋值给其他任何类型的指针，或者强转为一个具有实际类型的指针。malloc返回的即该指针。
+</code></pre><blockquote>
+</blockquote>
+<pre><code>&gt; 空指针表示的是指向一个&quot;空&quot;的地址，即不存在的地址（具体实现为指向地址为0的内存（void *）0，该地址的内存不可被访问），对空指针解引用会因为不存在具体的地址而失败。
+&gt;
+&gt; &gt; btw提一下野指针和悬挂指针：
+&gt; &gt;
+&gt; &gt; 野指针：指向垃圾内存的指针：
+&gt; &gt;
+&gt; &gt; + 未初始化的指针变量
+&gt; &gt; + 被free或delete之后没有制NULL的指针
+&gt; &gt; + 越界指针
+&gt; &gt;
+&gt; &gt; 悬挂指针：
+&gt; &gt;
+&gt; &gt; 上述的第二种情况
+</code></pre><p>   3.<del>把任何类型的表达式转换为void类型</del>（实际很少用到，static_cast<void>(param)不产生任何结果，但是可以阻止编译器产生unused警告）</void></p>
+<p>   4.用于类层次结构中基类和派生类之间指针或引用的转换（不进行安全性检查）</p>
+<pre><code>&gt; 上行转换是安全的（将一个派生类的指针或引用赋给基类指针或引用）
+&gt;
+&gt; 下行转换不能保证安全
+</code></pre><a id="more"></a>
+<h3 id="dynamic-cast"><a href="#dynamic-cast" class="headerlink" title="dynamic_cast"></a>dynamic_cast</h3><p>   四种转换中只有dynamic_cast是在运行时处理的（其他三种都在编译时完成），在运行时会进行安全性检查。</p>
+<ul>
+<li><p>不能进行基本数据类型的强制转换，&lt;&gt;内的类型要求必须为指针或引用</p>
+</li>
+<li><p>对基类或派生类进行转换时，基类必须具有虚函数，否则编译不通过（只有基类中有虚函数时，这种转换才有意义）</p>
+<blockquote>
+<p>出错的原因在于：<strong>运行时类型检查需要运行时类型信息，而这个信息存储在类的虚函数表</strong></p>
+</blockquote>
+</li>
+<li><p>在类的转换时，进行上行转换与static_cast一致，但是在下行转换时，dynamic_cast具有类型检查的功能。即<strong>要转换的指针指向的对象的实际类型与转换以后的对象类型一定要相同，否则转换失败，返回空指针</strong>（即把一个指向基类对象的指针赋值给派生类对象的指针时，会返回空指针，但是若这个基类指针指向的是一个派生类，则能成功赋值）</p>
+<blockquote>
+<p>值得特别注意的是，指针的类型和变量一样，都是在定义的时候被确定了，无论指向怎么改变，指针的类型本质不变。比如</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">char</span> *p = (<span class="keyword">char</span> *)<span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">1</span>);</span><br><span class="line">&gt; p = (<span class="keyword">char</span> *)<span class="keyword">new</span> <span class="keyword">double</span>(<span class="number">1.0</span>);</span><br><span class="line">&gt; <span class="comment">//不管给p赋什么值，对p解引用都是只取一个字节</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h3 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a>const_cast</h3><ul>
+<li><p>去除const特性，值得特别注意的是，const_cast不是去除变量的常量性，而是去除指向这个常量的常指针或常引用的常量性。（只有常指针和常引用可以指向一个常量，否则编译错误）</p>
+<blockquote>
+<p>去除常量性的用处：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; void func(const char* str)&#123;</span><br><span class="line">&gt; 	...;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; void func2(char* str)&#123;</span><br><span class="line">&gt; 	...;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>func可以传入一个const char<em> 指针，同时也可以传入一个char </em>指针；</p>
+<p>相反的，若向func2传入一个const char* 指针，编译报错。</p>
+<p>这么设计的目的就是为了确保const变量不被修改。在这种时候就可以使用const_cast去掉指针的常量性。</p>
+</blockquote>
+</li>
+<li><p><strong>const_cast&lt;type_id&gt; (expression)</strong>：除了const或volatile属性，type_id和expression一致。</p>
+<blockquote>
+<p>虽然说常量一旦被定义之后无法修改，但是通过const_cast，存在一种可能性，通过被去除const属性的指针，间接地去修改一个常量的值。且这样做不会被编译器阻止，但是这种行为的后果是未定义的。</p>
+<p>可能出现的结果就是，当一个常量通过上面的方式被修改之后，这个常量的地址和指针的地址虽然指向同一个地方，但是打印出来的值却会不一样。（编译时编译器可能会把常量当做立即数处理了，但具体看编译器实现）。</p>
+<p>const在C语言中是表示<strong>道义上保证变量的值不会被修改</strong>，并不能实际阻止修改。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="reinterpret-cast"><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a>reinterpret_cast</h3><p>   <strong>用法：reinterpret_cast&lt;type_id&gt; (expression)</strong></p>
+<p>   type-id必须是一个指针、引用、算术类型、函数指针或者成员指针。<br>   它可以把一个指针转换成一个整数，也可以把一个整数转换成一个指针（先把一个指针转换成一个整数，在把该整数转换成原类型的指针，还可以得到原先的指针值）。</p>
+<ul>
+<li>改变指针或引用的类型</li>
+<li>将指针或引用转换为一个足够长度的整形</li>
+<li><p>将整型转换为指针或引用类型</p>
+<p>语义就是重新解释，最类似C中的一个也是最任意的一个强制转换，<strong>强制转换过程仅仅只是比特位的拷贝</strong>，所以容易出问题。</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/12/ip-route/" class="archive-article-date">
-  	<time datetime="2019-04-12T07:43:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/12/ip-route/">IP、MAC、路由</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">net</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/14/cast/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/12/find-k-largest/" class="archive-article-date">
-  	<time datetime="2019-04-12T06:02:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/30/find-majority-element/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">(翻)多数投票算法--查找列表中的多数元素</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/12/find-k-largest/">查找给定数组中最大的第k个数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">C++类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.1.</span> <span class="toc-text">基本数据类型转换规则：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.2.</span> <span class="toc-text">C++的四个强转关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-cast"><span class="toc-number">1.3.</span> <span class="toc-text">static_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dynamic-cast"><span class="toc-number">1.4.</span> <span class="toc-text">dynamic_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const-cast"><span class="toc-number">1.5.</span> <span class="toc-text">const_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reinterpret-cast"><span class="toc-number">1.6.</span> <span class="toc-text">reinterpret_cast</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/11/find-loop/" class="archive-article-date">
-  	<time datetime="2019-04-11T07:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/11/find-loop/">判断一个图是否存在环</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">graph</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/10/process-scheduling/" class="archive-article-date">
-  	<time datetime="2019-04-10T06:38:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/10/process-scheduling/">进程调度</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">os</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/09/buddy-system-and-slab/" class="archive-article-date">
-  	<time datetime="2019-04-09T14:10:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/09/buddy-system-and-slab/">伙伴系统、slab</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">os</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/08/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-08T14:10:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/08/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -405,8 +402,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

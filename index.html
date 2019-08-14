@@ -148,6 +148,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cast" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h2>C++类型转换</h2><p></p>
+<p></p><h3>基本数据类型转换规则：</h3><p></p>
+<ul>
+<li>浮点型数据赋值给整型变量时，舍弃小数部分</li>
+<li>整型数据赋值给浮点型数据时，数值不变但是以指数方式存储</li>
+<li>字符型数据以ASCII码的形式赋值给整型变量</li>
+<li>long、int、short、char向下赋值时，会舍弃高位数据</li>
+<li>有符号数赋值给一个无符号类型时，不做转换直接进行内存拷贝，所以一个很小的负数可能变成一个很大的正数</li>
+</ul>
+<p></p><h3>C++的四个强转关键字</h3><p></p>
+<h3 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h3><p>   用法：static_cast &lt;类型说明符&gt; （变量或表达式）</p>
+<p>   1.用于基本数据类型之间的转换，安全性需要开发人员自己保证</p>
+<p>   2.将void*指针转换成目标类型的指针（注意只能是void*，类似int*到char*之类的转换会被编译器阻止，然后在C语言中进行基本类型指针之间的强转是被接受的）</p>
+<pre><code>&gt; 空指针与void*指针（通用变体类型指针）是不同的！
+</code></pre><blockquote>
+</blockquote>
+<pre><code>&gt; void *可以指向任何类型对象的地址，表示这是一个指针，和地址有关，但是不知道该地址上的对象的类型。void\*指针不能直接解引用，必须先赋值给其他任何类型的指针，或者强转为一个具有实际类型的指针。malloc返回的即该指针。
+</code></pre><blockquote>
+</blockquote>
+<pre><code>&gt; 空指针表示的是指向一个&quot;空&quot;的地址，即不存在的地址（具体实现为指向地址为0的内存（void *）0，该地址的内存不可被访问），对空指针解引用会因为不存在具体的地址而失败。
+&gt;
+&gt; &gt; btw提一下野指针和悬挂指针：
+&gt; &gt;
+&gt; &gt; 野指针：指向垃圾内存的指针：
+&gt; &gt;
+&gt; &gt; + 未初始化的指针变量
+&gt; &gt; + 被free或delete之后没有制NULL的指针
+&gt; &gt; + 越界指针
+&gt; &gt;
+&gt; &gt; 悬挂指针：
+&gt; &gt;
+&gt; &gt; 上述的第二种情况
+</code></pre><p>   3.<del>把任何类型的表达式转换为void类型</del>（实际很少用到，static_cast<void>(param)不产生任何结果，但是可以阻止编译器产生unused警告）</void></p>
+<p>   4.用于类层次结构中基类和派生类之间指针或引用的转换（不进行安全性检查）</p>
+<pre><code>&gt; 上行转换是安全的（将一个派生类的指针或引用赋给基类指针或引用）
+&gt;
+&gt; 下行转换不能保证安全
+</code></pre>
+        
+          <a class="article-more-a" href="/2019/08/14/cast/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/14/cast/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-find-majority-element" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -859,82 +946,6 @@
 
 
   
-    <article id="post-ip-route" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/12/ip-route/">IP、MAC、路由</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/12/ip-route/" class="archive-article-date">
-  	<time datetime="2019-04-12T07:43:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="IP数据包经由路由转发的时候源IP，目的ip是否改变？"><a href="#IP数据包经由路由转发的时候源IP，目的ip是否改变？" class="headerlink" title="IP数据包经由路由转发的时候源IP，目的ip是否改变？"></a>IP数据包经由路由转发的时候源IP，目的ip是否改变？</h3><p>这是个搞网络的基础问题，答案是不能改变的，除非做了nat转换才能改变。否则，数据包在整个传输过程中，源IP和目的IP不会发生改变。<br>不过MAC地址是变化的，因为发送端开始不知道目的主机的MAC地址，所以每经过一个路由器，MAC地址都会发生变化。<br>
-        
-          <a class="article-more-a" href="/2019/04/12/ip-route/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">net</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/12/ip-route/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1032,31 +1043,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">graph</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">os</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">net</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1069,6 +1060,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">graph</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">net</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
             
             <div class="clearfix"></div>
