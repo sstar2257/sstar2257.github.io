@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>伙伴系统、slab | 灰蛋&#39;s blog</title>
+  <title>伙伴系统、slab | Jeffy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="内核内存管理的一项重要工作就是如何在频繁申请释放内存的情况下，避免碎片的产生。这就要求内核采取灵活而恰当的内存分配策略。通常，内存分配一般有两种情况：大对象（大的连续空间分配）、小对象（小的空间分配）。针对不同的需求，Linux分别采取了伙伴系统算法和SLAB进行内存分配。   伙伴系统：把所有的空闲页框分为11个块链表，每个块链表中的结点分别是大小为1，2，4，8，16，32，64，128，25">
 <meta name="keywords" content="os">
 <meta property="og:type" content="article">
 <meta property="og:title" content="伙伴系统、slab">
 <meta property="og:url" content="http://yoursite.com/2019/04/09/buddy-system-and-slab/index.html">
-<meta property="og:site_name" content="灰蛋&#39;s blog">
+<meta property="og:site_name" content="Jeffy&#39;s blog">
 <meta property="og:description" content="内核内存管理的一项重要工作就是如何在频繁申请释放内存的情况下，避免碎片的产生。这就要求内核采取灵活而恰当的内存分配策略。通常，内存分配一般有两种情况：大对象（大的连续空间分配）、小对象（小的空间分配）。针对不同的需求，Linux分别采取了伙伴系统算法和SLAB进行内存分配。   伙伴系统：把所有的空闲页框分为11个块链表，每个块链表中的结点分别是大小为1，2，4，8，16，32，64，128，25">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-25T15:50:49.905Z">
@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="伙伴系统、slab">
 <meta name="twitter:description" content="内核内存管理的一项重要工作就是如何在频繁申请释放内存的情况下，避免碎片的产生。这就要求内核采取灵活而恰当的内存分配策略。通常，内存分配一般有两种情况：大对象（大的连续空间分配）、小对象（小的空间分配）。针对不同的需求，Linux分别采取了伙伴系统算法和SLAB进行内存分配。   伙伴系统：把所有的空闲页框分为11个块链表，每个块链表中的结点分别是大小为1，2，4，8，16，32，64，128，25">
   
-    <link rel="alternative" href="/atom.xml" title="灰蛋&#39;s blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Jeffy&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -51,7 +51,7 @@
 			<img src="/img/egg.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">灰蛋啊</a></h1>
+		  <h1 class="header-author"><a href="/">Jeffy</a></h1>
 		</hgroup>
 		
 
@@ -107,7 +107,7 @@
 				<img src="/img/egg.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">灰蛋啊</h1>
+			  <h1 class="header-author js-header-author">Jeffy</h1>
 			</hgroup>
 			
 			
@@ -345,7 +345,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 灰蛋啊
+    		&copy; 2019 Jeffy
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -432,10 +432,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">c++11</a>
               </li>
              
@@ -448,11 +444,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">os</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
