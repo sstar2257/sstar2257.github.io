@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>记录一些不是很常用或容易混淆的linux指令，包括快捷键和shell命令。 | Jeffy&#39;s blog</title>
+  <title>Archives: 2022/1 | Jeffy&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="命令编辑及光标移动删除从开头到光标处的命令文本ctrl + u删除从光标到结尾处的命令文本ctrl + k移动光标到命令开头ctrl + a移动光标到命令结尾ctrl + e向前移动一个单词alt + f向后移动一个单词alt + b删除一个单词ctrl + w">
-<meta name="keywords" content="linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="记录一些不是很常用或容易混淆的linux指令，包括快捷键和shell命令。">
-<meta property="og:url" content="http://yoursite.com/2019/04/25/linux-command/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Jeffy&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/archives/2022/01/index.html">
 <meta property="og:site_name" content="Jeffy&#39;s blog">
-<meta property="og:description" content="命令编辑及光标移动删除从开头到光标处的命令文本ctrl + u删除从光标到结尾处的命令文本ctrl + k移动光标到命令开头ctrl + a移动光标到命令结尾ctrl + e向前移动一个单词alt + f向后移动一个单词alt + b删除一个单词ctrl + w">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-25T06:20:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录一些不是很常用或容易混淆的linux指令，包括快捷键和shell命令。">
-<meta name="twitter:description" content="命令编辑及光标移动删除从开头到光标处的命令文本ctrl + u删除从光标到结尾处的命令文本ctrl + k移动光标到命令开头ctrl + a移动光标到命令结尾ctrl + e向前移动一个单词alt + f向后移动一个单词alt + b删除一个单词ctrl + w">
+<meta name="twitter:title" content="Jeffy&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="Jeffy&#39;s blog" type="application/atom+xml">
   
@@ -151,197 +146,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-linux-command" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      记录一些不是很常用或容易混淆的linux指令，包括快捷键和shell命令。
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/01/28/new-test-md/" class="archive-article-date">
+  	<time datetime="2022-01-28T15:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/01/28/new-test-md/">new_test.md</a>
     </h1>
   
 
-        
-        <a href="/2019/04/25/linux-command/" class="archive-article-date">
-  	<time datetime="2019-04-25T06:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="命令编辑及光标移动"><a href="#命令编辑及光标移动" class="headerlink" title="命令编辑及光标移动"></a>命令编辑及光标移动</h2><p>删除从开头到光标处的命令文本<br><code>ctrl + u</code><br>删除从光标到结尾处的命令文本<br><code>ctrl + k</code><br>移动光标到命令开头<br><code>ctrl + a</code><br>移动光标到命令结尾<br><code>ctrl + e</code><br>向前移动一个单词<br><code>alt + f</code><br>向后移动一个单词<br><code>alt + b</code><br>删除一个单词<br><code>ctrl + w</code><br><a id="more"></a></p>
-<h2 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h2><p>查看历史命令<br><code>history</code><br>快速执行历史命令<br><code>! + 历史命令前序号</code><br>搜索历史命令<br><code>ctrl + r</code>  </p>
-<h2 id="实时查看日志"><a href="#实时查看日志" class="headerlink" title="实时查看日志"></a>实时查看日志</h2><p><code>tail -f example.log</code>  </p>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>根据名称查找进程<br><code>pgrep + name</code><br>根据名称杀死进程<br><code>killall + name</code><br><code>pkill + name</code><br>查看进程运行时间<br><code>ps -p pid -o lstart,etime</code><br>中止一个进程(发送 SIGINT 信号给前台进程组中的所有进程)<br><code>ctrl + c</code><br>挂起一个进程(发送 SIGTSTP 信号给前台进程组中的所有进程)<br><code>ctrl + z</code></p>
-<blockquote>
-<p>ctrl-d 不是发送信号，而是表示一个特殊的二进制值，表示 EOF。  </p>
-</blockquote>
-<p>恢复一个被挂起的进程至前台<br><code>fg + [jobnumber]</code><br>恢复一个被挂起的进程至后台<br><code>bg + [jobnumber]</code><br>查看jobnumber<br><code>jobs</code>  </p>
-<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><p>记录日志文件同时输出到控制台<br><code>./example.sh | tee example.log</code></p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/25/linux-command/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/04/25/socket/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          socket编程踩坑
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/04/15/memo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">收藏</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令编辑及光标移动"><span class="toc-number">1.</span> <span class="toc-text">命令编辑及光标移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#历史命令"><span class="toc-number">2.</span> <span class="toc-text">历史命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实时查看日志"><span class="toc-number">3.</span> <span class="toc-text">实时查看日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程"><span class="toc-number">4.</span> <span class="toc-text">进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日志"><span class="toc-number">5.</span> <span class="toc-text">日志</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -364,8 +211,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
