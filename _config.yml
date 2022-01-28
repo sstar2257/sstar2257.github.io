@@ -79,7 +79,7 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com/sstar2257/sstar2257.github.io.git
+  repo: git@github.com:sstar2257/sstar2257.github.io.git
   branch: master
 
 jsonContent:
